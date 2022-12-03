@@ -15,7 +15,7 @@
 ### 主な利用シーン
 <慣れない看護業務をするとき>
 
-##  実装機能リスト
+###  実装機能リスト
 <https://docs.google.com/spreadsheets/d/1jw228IuQLe-jCYy6Krv_FzWtoy1AJN6Gs9D49WYWeYk/edit?usp=sharing>
 
 ## 設計書
