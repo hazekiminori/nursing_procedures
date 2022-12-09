@@ -1,4 +1,4 @@
 class Category < ApplicationRecord
   
-  has_many :procedures, dependent: :destro
+  has_many :procedures, dependent: :destroy
 end
