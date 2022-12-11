@@ -15,8 +15,8 @@ Rails.application.routes.draw do
     resources :categories, only:[:index, :create, :edit, :update]
     resources :users, only:[:index, :show, :edit, :update]
     resources :procedures
-    get '/admin/searches' => 'searches#index'
-    patch '/admin/searches' => 'searches#searche', as:'admin_searches'
+    get '/searches' => 'searches#index'
+    patch '/searches' => 'searches#searche', as:'admin_searches'
   end
 
   scope module: :public do
@@ -26,8 +26,9 @@ Rails.application.routes.draw do
     patch '/users/infomation' => 'users#update'
     get 'users/quit' => 'users#quit', as:'quit'
     patch 'users/withdrawal' => 'users#withdrawal', as:'withdrawal'
-    resources :changes
-    resources :procedures, only:[:index, :new, :edit, :crate, :update]
+    resources :procedures, only:[:index, :new, :edit, :crate, :update] do
+      resources :changes, only:[:create]
+    end
     resources :bookmarks, only:[:index, :update, :create, :destroy]
     delete 'bookmarkas/destroy_all' => 'bookmarks#destroy_all', as:'destroy_all'
     resource :searches, only:[:index]
