@@ -11,6 +11,41 @@
   </head>
 
   <body>
-    <%= yield %>
+    <header>
+      <nav class>
+        <div class="container">
+          <span></span>
+            <button>
+              <span></span>
+            </button>
+              <div class>
+                <ul class>
+                  <% if user_signed_in? %>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                  <% elsif admin_sign_in? %>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                  <% else %>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                  <% end %>
+                </ul>
+              </div>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <%= yield %>
+    </main>
+    <footer>
+
+    </footer>
   </body>
 </html>
