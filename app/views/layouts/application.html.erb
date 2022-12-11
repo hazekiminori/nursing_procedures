@@ -6,35 +6,45 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+    <script src="https://kit.fontawesome.com/a17d38e09f.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   </head>
 
   <body>
     <header>
-      <nav class>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
-          <span></span>
-            <button>
-              <span></span>
+          <span>Nursing procedures</span>
+            <button class="navbar-toggler"
+                    type="button"
+                    data-toggle="collapse"
+                    data-target="#navbarNavDropdown"
+                    aria-controls="navbarNavDropdown"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
             </button>
-              <div class>
-                <ul class>
+              <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav ml-auto">
                   <% if user_signed_in? %>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                  <% elsif admin_sign_in? %>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
+                    <li class="nav-item">カテゴリー一覧</li>
+                    <li class="nav-item">ブックマーク一覧</li>
+                    <li class="nav-item">手順作成</li>
+                    <li class="nav-item">マイページ</li>
+                    <li class="nav-item">ログアウト</li>
+                  <% elsif admin_signed_in? %>
+                    <li class="nav-item">カテゴリー一覧</li>
+                    <li class="nav-item">利用者一覧</li>
+                    <li class="nav-item">手順作成</li>
+                    <li class="nav-item">ログアウト</li>
                   <% else %>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
+                    <li class="nav-item">カテゴリー一覧</li>
+                    <li class="nav-item">新規作成</li>
+                    <li class="nav-item">ログイン</li>
                   <% end %>
                 </ul>
               </div>
@@ -45,7 +55,11 @@
       <%= yield %>
     </main>
     <footer>
-
+      <div class="container mt-5">
+        <div class="row">
+          <div class="mx-auto"></div>
+        </div>
+      </div>
     </footer>
   </body>
 </html>
