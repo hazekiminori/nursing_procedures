@@ -1,0 +1,8 @@
+<h4>利用者詳細</h4>
+  <%= @user.staff_number %>
+  <%= @user.mame %>
+  <%= @user.isdeleted %>
+  
+<% @user.procedures.each do |user| %>
+  <%= user.name %>
+<% end %>

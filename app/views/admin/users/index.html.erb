@@ -1,0 +1,6 @@
+<h4>利用者一覧</h4>
+  <% @user.each do |user| %>
+    <%= user.staff_number %>
+    <%= user.name %>
+    <%= user.is_deleted %>
+  <% end %>
