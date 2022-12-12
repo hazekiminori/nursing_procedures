@@ -40,7 +40,7 @@
                     <li class="nav-item">
                       <%= link_to 'マイページ', my_page_path %></li>
                     <li class="nav-item">
-                      <%= link_to 'ログアウト', destroy_user_session_path %></li>
+                      <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
                   <% elsif admin_signed_in? %>
                     <li class="nav-item">
                       <%= link_to 'カテゴリー一覧',  admin_categories_path %></li>
@@ -49,7 +49,7 @@
                     <li class="nav-item">
                       <%= link_to '手順作成', new_admin_procedure_path %></li>
                     <li class="nav-item">
-                      <%= link_to 'ログアウト', destroy_admin_session_path %></li>
+                      <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %></li>
                   <% else %>
                     <li class="nav-item">
                       <%= link_to 'カテゴリー一覧', admin_categories_path %></li>
