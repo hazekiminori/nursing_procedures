@@ -20,7 +20,8 @@ Rails.application.routes.draw do
   end
 
   scope module: :public do
-    resource :categories, only:[:index, :show]
+    get '/categories' => 'categories#index'
+    get '/categories/:id' => 'categories#show'
     get '/users/my_page' => 'users#show', as:'my_page'
     get '/users/infomation/edit' => 'users#edit'
     patch '/users/infomation' => 'users#update'
