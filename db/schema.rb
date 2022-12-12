@@ -81,6 +81,7 @@ ActiveRecord::Schema.define(version: 2022_12_09_132438) do
   create_table "procedures", force: :cascade do |t|
     t.integer "user_id"
     t.string "title"
+    t.text "necessities"
     t.text "procedure"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

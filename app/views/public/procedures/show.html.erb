@@ -1,0 +1,19 @@
+<h4>手順詳細</h4>
+  <%= image_tag @procedure.image(100,100) %>
+  <%= @procedure.item %>
+  
+<div>
+  <p>変更件数：<%= @procedure.change.count %></p>
+  <% @procedure.changes.each do |change| %>
+    <p><%= change.user.name %></p>
+    <%= post_comment.user.name %>
+    <%= post_comment.created_at.strftime('%Y/%m/%d') %><%= post_comment.comment %>
+  <% end %>
+</div>
+<div>
+  <%= form_with model: [@procedure, @change] do |f| %>
+    <%= f.text_area :change, rows: '5', placeholder: "変更点や追加点をここに記載してください" %>
+    <%= f.text_area :reason, rows: '5', placeholder: "変更理由を記載してください" %>
+    <%= f.submit "送信する" %>
+  <% end %>
+</div>
