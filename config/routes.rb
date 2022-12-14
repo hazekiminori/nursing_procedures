@@ -36,7 +36,7 @@ Rails.application.routes.draw do
     resources :procedures, only:[:index, :new, :edit, :crate, :update] do
       resources :changes, only:[:create]
     end
-    resources :bookmarks, only:[:index, :update, :create, :destroy]
+    resource :bookmarks, only:[:create, :destroy]
     delete 'bookmarkas/destroy_all' => 'bookmarks#destroy_all', as:'destroy_all'
     resource :searches, only:[:index]
     get '/searches' => 'searches#searches', as:'searches'
