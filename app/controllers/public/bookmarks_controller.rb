@@ -1,5 +1,9 @@
 class Public::BookmarksController < ApplicationController
   
+  def index
+    @bookmarks = Bookmark.all
+  end 
+  
   def create
     procedure = Procedurs.find(params[:procedure_id])
     bookmark = current_user.bookmarks.new(procedure_id: procedure.id)

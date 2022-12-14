@@ -2,12 +2,12 @@ Rails.application.routes.draw do
   devise_for :admins,skip: [:registrations, :passwords] ,controllers: {
     sessions: "admin/sessions"
   }
-  
+
   devise_for :users,skip: [:passwords], controllers: {
     registrations: "public/registrations",
     sessions: "public/sessions"
   }
-  
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   devise_scope :user do
     post 'users/guest_sign_in', to: 'public/sessions#guest_sign_in'
@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
   root to: "public/homes#top"
   get '/admin' => 'admin/homes#top'
-   
+
 
   namespace :admin do
     resources :categories, only:[:index, :create, :edit, :update]
@@ -37,7 +37,8 @@ Rails.application.routes.draw do
       resources :changes, only:[:create]
     end
     resource :bookmarks, only:[:create, :destroy]
-    delete 'bookmarkas/destroy_all' => 'bookmarks#destroy_all', as:'destroy_all'
+    get '/bookmarks' => 'bookmarks#index'
+    delete 'bookmarks/destroy_all' => 'bookmarks#destroy_all', as:'destroy_all'
     resource :searches, only:[:index]
     get '/searches' => 'searches#searches', as:'searches'
   end

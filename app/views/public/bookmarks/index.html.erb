@@ -1,1 +1,4 @@
-ブックマーク
+<h4>ブックマーク一覧</h4>
+  <% @bookmarks.each do |bookmark| %>
+    <%= link_to "bookmark.procedures.title", procedure_path(bookmark.procedure.id) %>
+  <% end %>
