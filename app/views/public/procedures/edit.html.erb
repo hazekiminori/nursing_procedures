@@ -1,5 +1,5 @@
 <h4>手順編集</h4>
-  <%= form_with model: @procedure %>
+  <%= form_with model: @procedure, procedure_path do |f| %>
     <%= f.file_field :image, placeholder: "物品配置画像", accept:"image/*" %>
     <%= f.text_area :item %>
     <%= f.text_area :procedure %>
