@@ -1,0 +1,7 @@
+<h4>手順編集</h4>
+  <%= form_with model: @procedure %>
+    <%= f.file_field :image, placeholder: "物品配置画像", accept:"image/*" %>
+    <%= f.text_area :item %>
+    <%= f.text_area :procedure %>
+    <%= f.submit "変更を確定する" %>
+  <% end %>
