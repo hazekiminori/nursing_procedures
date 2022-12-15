@@ -1,0 +1,5 @@
+<h4>カテゴリー編集</h4>
+  <%= form_with model: categories, url: categories_path, method: :patch do |f| %>
+    <p>カテゴリータイトル</p>
+    <%= f.text_field :title %>
+  <% end %>
