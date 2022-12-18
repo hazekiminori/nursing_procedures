@@ -1,0 +1,8 @@
+<h4>利用者情報編集ページ</h4>
+
+<%= form_with model: @user, users_infomation_path, method: :patch do |f| %>
+  <%= f.number_field :staff_number %>
+  <%= f.text_field :name %>
+<% end %>
+
+<%= link_to "退会する", quit_path %>
