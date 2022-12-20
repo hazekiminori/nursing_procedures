@@ -6,8 +6,7 @@ class User < ApplicationRecord
          
   has_many :bookmarks, dependent: :destroy
   has_many :procedures, dependent: :destroy
-  has_many :changes, dependent: :destroy
-  
+
   def self.guest
     find_or_create_by!(email: 'guest@example.com') do |user|
       user.password = SecureRandom.urlsafe_base64

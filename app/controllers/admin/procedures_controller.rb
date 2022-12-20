@@ -1,8 +1,18 @@
 class Admin::ProceduresController < ApplicationController
+ 
+ def new
+   @procedure = Procedure.new
+ end
+ 
+ def create
+   @procedure = Procedure.new
+   @procedure.save
+   redirect_to admin_procedure_path
+ end
   
-  def show
+ def show
    @procedure = Procedure.find(params[:id])
-    @change = Change.new
-  end
+   @change = Change.new
+ end
   
 end
