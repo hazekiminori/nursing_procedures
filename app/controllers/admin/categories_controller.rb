@@ -9,7 +9,7 @@ class Admin::CategoriesController < ApplicationController
   end
   
   def create
-    @category = category.new
+    @category = Category.new
     @category.save
     redirect_to categories_path
   end

@@ -2,3 +2,8 @@
   <% @categories.each do |category| %>
     <%= category.title %>
   <% end %>
+
+<h5>カテゴリー追加</h5>
+  <%= form_with mdoel: @category, url: admin_categories_path do |f| %>
+    <%= f.text_field :name %>
+  <% end %>
