@@ -1,0 +1,12 @@
+<h4>マイページ</h4>
+
+  <%= link_to "登録情報編集", users_infomation_edit_path %>
+  
+  <%= link_to "ブックマーク一覧", bookmarks_path %>
+  
+  <h5>登録した手順一覧</h5>
+  <% @user.procedures.each do |procedure| %>
+    <%= procedure.title %>
+  <% end %>
+  
+  

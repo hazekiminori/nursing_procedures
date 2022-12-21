@@ -9,4 +9,7 @@ class Public::UsersController < ApplicationController
     redirect_to my_page_path
   end
   
+  def show
+  end 
+  
 end

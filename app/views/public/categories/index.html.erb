@@ -1,5 +1,5 @@
 <h4>カテゴリー一覧</h4>
   <% @categories.each do |category| %>
-    <%= category.name %>
+    <%= link_to category.name, procedure_path(category_id) %>
   <% end %>
   

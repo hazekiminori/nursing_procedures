@@ -1,23 +1,23 @@
 class Admin::CategoriesController < ApplicationController
-  
+
   def index
     @categories = Category.all
   end
-  
+
   def show
     @category = Category.find(params[:id])
   end
-  
+
   def create
     @category = Category.new
     @category.save
-    redirect_to categories_path
+    redirect_to admin_categories_path
   end
-  
+
   def edit
     @category = Category.find(params[:id])
   end
-  
+
   def update
     @category = Category.find(params[:id])
     if @category.update(category_params)
@@ -26,11 +26,11 @@ class Admin::CategoriesController < ApplicationController
       render :edit
     end
   end
-  
+
   private
-  
+
   def category_params
     params.require(:category).permit(:name)
   end
-  
+
 end

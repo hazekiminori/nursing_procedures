@@ -14,4 +14,11 @@ class User < ApplicationRecord
       # 例えば name を入力必須としているならば， user.name = "ゲスト" なども必要
     end
   end
+  
+  def email_required?
+    false
+  end
+  def email_changed?
+    false
+  end
 end
