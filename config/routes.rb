@@ -33,7 +33,7 @@ Rails.application.routes.draw do
     patch '/users/infomation' => 'users#update'
     get 'users/quit' => 'users#quit', as:'quit'
     patch 'users/withdrawal' => 'users#withdrawal', as:'withdrawal'
-    resources :procedures, only:[:new, :edit, :crate, :update, :show] do
+    resources :procedures, only:[:new, :edit, :create, :update, :show] do
       resources :changes, only:[:create]
     end
     resource :bookmarks, only:[:create, :destroy]

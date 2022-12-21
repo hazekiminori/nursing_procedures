@@ -1,9 +1,9 @@
 <h4>手順新規作成</h4>
-  <%= form_with model: procedure, local:true, url: procedure_path do |f| %>
+  <%= form_with model: @procedure, local:true, url: procedures_path, method: :post do |f| %>
 
 <p>手順タイトル</p>
   <%= f.text_field :title %>
- 
+
 <p>物品配置画像</p>
   <%= f.file_field :image, placeholder: "物品配置画像", accept:"image/*" %>
 
@@ -12,7 +12,7 @@
 
 <p>手順内容</p>
  <%= f.text_area :procedure %>
- 
+
 <div><%= f.submit '手順作成' %></div>
- 
+
 <% end %>
