@@ -1,1 +1,21 @@
-<h4></h4>
+<table>
+  <caption>ブックマーク一覧</caption>
+  <thead>
+    <tr>
+      <th>タイトル</th>
+      <th>手順</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @bookmarks.each do |bookmark| %>
+      <tr>
+        <td>
+          <%= link_to procedure_path(bookmark.post) do %>
+            <%= bookmark.procedure.title %>
+          <% end %>
+        </td>
+        <td><%= bookmark.procedure.procedure %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

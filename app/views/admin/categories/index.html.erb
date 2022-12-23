@@ -1,10 +1,10 @@
 <h4>カテゴリー一覧</h4>
   <% @categories.each do |category| %>
-    <%= category.name %>
+    <%= link_to category.name, admin_categories_path(category.id) %>
   <% end %>
 
 <h5>カテゴリー追加</h5>
-  <%= form_with mdoel: @category, url: admin_categories_path do |f| %>
+  <%= form_with mdoel: @category, url: admin_categories_path, method: :post do |f| %>
     <%= f.text_field :name %>
     <%= f.submit "追加する" %>
   <% end %>

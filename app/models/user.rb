@@ -3,7 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-         
+
   has_many :bookmarks, dependent: :destroy
   has_many :procedures, dependent: :destroy
 
@@ -14,11 +14,16 @@ class User < ApplicationRecord
       # 例えば name を入力必須としているならば， user.name = "ゲスト" なども必要
     end
   end
-  
+
   def email_required?
     false
   end
+
   def email_changed?
+    false
+  end
+
+  def will_save_change_to_email?
     false
   end
 end

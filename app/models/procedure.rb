@@ -1,5 +1,6 @@
 class Procedure < ApplicationRecord
-  belongs_to :category
+  has_many :procedure_category_relations
+  has_many :categories, through: :procedure_category_relations
   belongs_to :user
   has_many :bookmarks, dependent: :destroy
   

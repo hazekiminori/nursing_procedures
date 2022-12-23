@@ -23,5 +23,9 @@ class Admin::ProceduresController < ApplicationController
    @procedure = Procedure.find(params[:id])
    @change = Change.new
  end
+ 
+ def procedure_params
+    params.require(:procedure).permit(:title, :procedure, category_ids: [])
+  end
   
 end

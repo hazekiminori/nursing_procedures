@@ -1,8 +1,11 @@
 <h4>利用者情報編集ページ</h4>
 
-<%= form_with model: @user, users_infomation_path, method: :patch do |f| %>
+<%= form_with model: @user, url: users_infomation_path, method: :patch do |f| %>
+  <p>職員番号</p>
   <%= f.number_field :staff_number %>
+  <p>氏名</p>
   <%= f.text_field :name %>
+  <div><%= f.submit "編集登録する" %></div>
 <% end %>
 
 <%= link_to "退会する", quit_path %>

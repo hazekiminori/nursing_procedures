@@ -1,7 +1,10 @@
-手順新規登録
-<%= form_with model: @procedure , local:true, url: admin_procedure_path %>
+<h4>手順新規登録</h4>
+<%= form_with model: @procedure , local:true, url: admin_procedures_path, method: :post do |f| %>
+  <p>物品配置</p>
   <%= f.file_field :image %>
+  <p>必要物品</p>
   <%= f.text_area :item %>
+  <p>手順</p>
   <%= f.text_area :procedure %>
 <% end %>
 
@@ -11,7 +14,40 @@
   <%= change.created_at.strftime('%Y/%m/%d') %>
 <% end %>
 
-<%= form_with model: [@procedure, @change] do |f| %>
-  <%= f.text_area :change, rows:'5', placeholder: "変更。追加点をここに" %>
-  <%= f.submit "送信する" %>
+<%#= form_with model: [@procedure, @change] do |f| %>
+  <%#= f.text_area :change, rows:'5', placeholder: "変更。追加点をここに" %>
+  <%#= f.submit "送信する" %>
+<%# end %>
+
+<%= form_with model: @procedure do |f| %>
+  <p>
+    <%= f.label :title, '手順タイトル' %>
+    <%= f.text_field :title %>
+  </p>
+  
+  <p>
+    <%= f.label :image, '物品配置' %>
+    <%= f.file_field :image %>
+  </p>
+  
+  <p>
+    <%= f.label :item, '必要物品' %>
+    <%= f.text_area :item %>
+  </p>
+  <p>
+    <%= f.label :procedure, '手順'%>
+    <%= f.text_field :procedure %>
+  </p>
+
+  <p>
+    <%= f.label :category, 'カテゴリ' %>
+    <%= f.collection_check_boxes(:category_ids, Category.all, :id, :name) do |category| %> 
+      <%= category.label do %>
+        <%= category.check_box %>
+        <%= category.text %>
+      <% end %>
+    <% end %>
+  </p>
+
+  <%= f.submit '作成する' %>
 <% end %>

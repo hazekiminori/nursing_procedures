@@ -1,5 +1,7 @@
 <h4>本当に退会しますか？</h4>
   <p>退会した場合、ブックマークしている情報は確認することができなくなります</p>
 
-  <%= link_to "退会する", withdrawal_path %>
+  <%#= link_to "退会する", withdrawal_path, method: :patch, data: { confirm: '本当に退会しますか？' } %>
+   <%= link_to "退会する", withdrawal_path, method: :patch, class:"btn btn-danger", data: { confirm: '本当に退会しますか？' } %>
+
   <%= link_to "退会しない", my_page_path %>

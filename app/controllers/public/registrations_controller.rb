@@ -10,11 +10,11 @@ class Public::RegistrationsController < Devise::RegistrationsController
       redirect_to root_path, alert: 'ゲストユーザーは削除できません。'
     end
   end
- 
+
   def configure_sign_up_params
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :staff_number])
   end
-  
+
   def after_sign_up_path_for(resource)
     categories_path
   end
