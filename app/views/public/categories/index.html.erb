@@ -1,4 +1,15 @@
 <h4>カテゴリー一覧</h4>
+  <div class="search-form">
+    <%= form_with url: searches_path, method: :get, local: true do |f| %>
+      <%= f.text_field :keyword, value: @keyword %>
+      <%= f.submit "検索" %>
+    <% end %>
+  </div>
+  <div class="post-list">
+    <% @categories.each do |category| %>
+      <%= category.name %>
+    <% end %>
+  </div>
   <% @categories.each do |category| %>
     <%= link_to procedure_path(category.id) do %>
     <%= category.name %>

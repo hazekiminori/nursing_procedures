@@ -88,6 +88,7 @@ ActiveRecord::Schema.define(version: 2022_12_23_093341) do
   create_table "procedures", force: :cascade do |t|
     t.integer "user_id"
     t.string "title"
+    t.string "item"
     t.text "necessities"
     t.text "procedure"
     t.datetime "created_at", precision: 6, null: false

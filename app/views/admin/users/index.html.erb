@@ -1,6 +1,25 @@
 <h4>利用者一覧</h4>
-  <% @user.each do |user| %>
-    <%= user.staff_number %>
-    <%= user.name %>
-    <%= user.is_deleted %>
-  <% end %>
+  <table class>
+    <thead>
+      <tr>
+        <th>職員番号</th>
+        <th>利用者氏名</th>
+        <th>ステータス</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @user.each do |user| %>
+      <tr>
+        <td><%= user.staff_number %></td>
+        <td><%= link_to user.name, admin_user_path(user.id) %></td>
+        <td>
+          <% if user.is_deleted != false %>
+            <p>無効</p>
+          <% else %>
+            <p>有効</p>
+          <% end %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>

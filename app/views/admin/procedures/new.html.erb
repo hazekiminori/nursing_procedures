@@ -19,17 +19,17 @@
   <%#= f.submit "送信する" %>
 <%# end %>
 
-<%= form_with model: @procedure do |f| %>
+<%= form_with model: @procedure, local:true, url: admin_procedures_path, method: :post do |f| %>
   <p>
     <%= f.label :title, '手順タイトル' %>
     <%= f.text_field :title %>
   </p>
-  
+
   <p>
     <%= f.label :image, '物品配置' %>
     <%= f.file_field :image %>
   </p>
-  
+
   <p>
     <%= f.label :item, '必要物品' %>
     <%= f.text_area :item %>
@@ -41,7 +41,7 @@
 
   <p>
     <%= f.label :category, 'カテゴリ' %>
-    <%= f.collection_check_boxes(:category_ids, Category.all, :id, :name) do |category| %> 
+    <%= f.collection_check_boxes(:category_ids, Category.all, :id, :name) do |category| %>
       <%= category.label do %>
         <%= category.check_box %>
         <%= category.text %>
