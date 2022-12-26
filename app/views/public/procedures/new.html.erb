@@ -1,4 +1,6 @@
-<%= form_with model: @procedure, procedures_path, method: :post do |f| %>
+<h4>手順新規作成画面</h4>
+
+<%= form_with model: @procedure, url: procedures_path, method: :post do |f| %>
   <p>
     <%= f.label :title, '手順タイトル' %>
     <%= f.text_field :title %>

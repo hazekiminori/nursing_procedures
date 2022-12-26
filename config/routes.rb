@@ -40,7 +40,7 @@ Rails.application.routes.draw do
     resource :bookmarks, only:[:create, :destroy]
     get '/bookmarks' => 'bookmarks#index'
     delete 'bookmarks/destroy_all' => 'bookmarks#destroy_all', as:'destroy_all'
-    get '/search' => 'categories#searches', as:'search'
+    get '/search' => 'categories#search', as:'search'
     resources :procedure_category_relations, only:[:create, :new, :show]
   end
 
