@@ -1,18 +1,33 @@
-<h4>手順新規作成</h4>
-  <%= form_with model: @procedure, local:true, url: procedures_path, method: :post do |f| %>
+<%= form_with model: @procedure, procedures_path, method: :post do |f| %>
+  <p>
+    <%= f.label :title, '手順タイトル' %>
+    <%= f.text_field :title %>
+  </p>
 
-<p>手順タイトル</p>
-  <%= f.text_field :title %>
+  <p>
+    <%= f.label :image, '物品配置画像' %>
+    <%= f.file_field :image %>
+  </p>
 
-<p>物品配置画像</p>
-  <%= f.file_field :image, placeholder: "物品配置画像", accept:"image/*" %>
+  <p>
+    <%= f.label :necessity_item, '必要物品' %>
+    <%= f.text_area :necessity_item %>
+  </p>
 
-<p>必要物品</p>
-  <%= f.text_area :item %>
+  <p>
+    <%= f.label :procedure, '手順'%>
+    <%= f.text_area :procedure %>
+  </p>
 
-<p>手順内容</p>
- <%= f.text_area :procedure %>
+  <p>
+    <%#= f.label :category, 'カテゴリ' %>
+    <%#= f.collection_check_boxes(:category_ids, Category.all, :id, :name) do |category| %>
+      <%#= category.label do %>
+        <%#= category.check_box %>
+        <%#= category.text %>
+      <%# end %>
+    <%# end %>
+  </p>
 
-<div><%= f.submit '手順作成' %></div>
-
+  <%= f.submit '手順登録する' %>
 <% end %>

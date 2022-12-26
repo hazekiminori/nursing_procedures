@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'procedure_category_relations/add_user'
   devise_for :admin,skip: [:registrations, :passwords] ,controllers: {
     sessions: "admin/sessions"
   }
@@ -21,8 +22,8 @@ Rails.application.routes.draw do
     resources :categories, only:[:index, :create, :edit, :update]
     resources :users, only:[:index, :show, :edit, :update]
     resources :procedures
-    get '/searches' => 'searches#index'
-    patch '/searches' => 'searches#searche', as:'admin_searches'
+    resources :procedure_category_relations, only:[:create, :new, :show]
+    get '/search' => 'categories#search', as:'search'
   end
 
   scope module: :public do
@@ -31,7 +32,7 @@ Rails.application.routes.draw do
     get '/users/my_page' => 'users#show', as:'my_page'
     get '/users/infomation/edit' => 'users#edit'
     patch '/users/infomation' => 'users#update'
-    get 'users/quit' => 'users#quit', as:'quit'
+    get 'users/quit' => 'users#quit', as:'quit';
     patch 'users/withdrawal' => 'users#withdrawal', as:'withdrawal'
     resources :procedures, only:[:new, :edit, :create, :update, :show] do
       resources :changes, only:[:create]
@@ -39,8 +40,8 @@ Rails.application.routes.draw do
     resource :bookmarks, only:[:create, :destroy]
     get '/bookmarks' => 'bookmarks#index'
     delete 'bookmarks/destroy_all' => 'bookmarks#destroy_all', as:'destroy_all'
-    resource :searches, only:[:index]
-    get '/searches' => 'searches#searches', as:'searches'
+    get '/search' => 'categories#searches', as:'search'
+    resources :procedure_category_relations, only:[:create, :new, :show]
   end
 
 end

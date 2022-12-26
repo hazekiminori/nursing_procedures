@@ -1,10 +1,26 @@
 <h4>カテゴリー一覧</h4>
-  <% @categories.each do |category| %>
+　<% @categories.each do |category| %>
+　  <%= category.name %>
     <%= link_to category.name, admin_categories_path(category.id) %>
   <% end %>
 
+<h5>カテゴリー検索</h5>
+   <div class="search-form">
+  <%= form_with url: admin_search_path, method: :get, local: true do |f| %>
+    <%= f.text_field :keyword, value: @keyword %>
+    <%= f.submit "検索" %>
+  <% end %>
+</div>
+<div class="category-list">
+  <% @categories.each do |category| %>
+    <%= category.name %>
+  <% end %>
+</div>
+
 <h5>カテゴリー追加</h5>
-  <%= form_with mdoel: @category, url: admin_categories_path, method: :post do |f| %>
+  <%= form_with model: @category do |f| %>
     <%= f.text_field :name %>
     <%= f.submit "追加する" %>
   <% end %>
+  
+ 
