@@ -11,8 +11,11 @@ class Admin::CategoriesController < ApplicationController
   def create
     @category = Category.new(category_params)
     @categories = Category.all  
-    @category.save
-    redirect_to admin_categories_path
+    if @category.save
+      redirect_to admin_categories_path, notice: "登録しました"
+    else
+      render index
+    end
   end
 
   def edit
@@ -32,12 +35,6 @@ class Admin::CategoriesController < ApplicationController
     @categories = Category.search(params[:keyword])
     @keyword = params[:keyword]
     render "index"
-  end
-
-  private
-
-  def category_params
-    params.require(:category).permit(:procedure_id, :name)
   end
 
 end

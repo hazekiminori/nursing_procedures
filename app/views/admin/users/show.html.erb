@@ -1,8 +1,15 @@
 <h4>利用者詳細</h4>
-  <%= @user.staff_number %>
-  <%= @user.mame %>
-  <%= @user.isdeleted %>
-  
-<% @user.procedures.each do |user| %>
-  <%= user.name %>
+  <p>職員番号</p>
+  <p><%= @user.staff_number %></p>
+  <p>氏名</p>
+  <p><%= @user.name %></p>
+  <p>会員ステータス</p>
+  <% if @user.is_deleted != false %>　
+    <p>無効</p>
+  <% else %>
+    <p>有効</p>
+  <% end %>
+
+<% @user.procedures.each do |procedure| %>
+  <%= procedure.title %>
 <% end %>

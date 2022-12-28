@@ -102,6 +102,7 @@ ActiveRecord::Schema.define(version: 2022_12_23_093341) do
     t.datetime "remember_created_at"
     t.string "name"
     t.string "staff_number"
+    t.boolean "is_deleted", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
