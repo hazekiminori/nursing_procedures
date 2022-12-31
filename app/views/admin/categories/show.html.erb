@@ -1,0 +1,7 @@
+<h5>
+  <%= @category.name %>
+</h5>
+
+ <% @category.procedures.each do |procedure| %>
+   <%= link_to procedure.title, procedure_path(procedure.id) %>
+ <% end %>

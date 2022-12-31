@@ -1,6 +1,6 @@
 <h4>カテゴリー一覧</h4>
 　<% @categories.each do |category| %>
-    <%= link_to category.name, admin_categories_path(category.id) %>
+    <%= link_to category.name, admin_category_path(category.id) %>
   <% end %>
 
 <h5>カテゴリー検索</h5>
