@@ -1,6 +1,5 @@
 <h4>カテゴリー一覧</h4>
 　<% @categories.each do |category| %>
-　  <%= category.name %>
     <%= link_to category.name, admin_categories_path(category.id) %>
   <% end %>
 
@@ -11,28 +10,5 @@
     <%= f.submit "検索" %>
   <% end %>
 </div>
-<div class="category-list">
-  <% @categories.each do |category| %>
-    <%= category.name %>
-  <% end %>
-</div>
 
-<h5>カテゴリー追加</h5>
-  <%= form_with model: @category, local: true do |f| %>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-    <%= f.submit "追加する" %>
-  <% end %>
-  
-<div class="col-sm-12">
-    <h2 class="text-center">カテゴリの追加</h2>
-    <%= form_with model: @category, local: true do |f| %>
-        <div class="form_input">
-            <%= f.label :name %>
-            <%= f.text_field :name, class:"form-control" %>
-        </div>
-        <div class="form_action row">
-            <%= f.submit "登録する", class: "btn col-sm-12 submit_btn" %>
-        </div>
-    <% end %>
-</div>
+<%= link_to "カテゴリー追加する", new_admin_category_path %>
