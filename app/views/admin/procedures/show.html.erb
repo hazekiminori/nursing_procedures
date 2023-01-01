@@ -1,19 +1,23 @@
 <h4>手順詳細</h4>
-  <%= @category.procedures.title %>
-  
-  <%= image_tag %>
-  <%= procedure.item %>
-  <%= procedure.procedure %>
-  
+  <p>手順タイトル</p>
+    <%= @procedure.title %>
+  <p>物品配置画像</p>
+    <%= image_tag @procedure.get_image(100,100) %>
+  <p>必要物品</p>
+    <%= @procedure.necessity_item %>
+  <p>手順</p>
+    <%= @procedure.procedure %>
+
   <変更点、追加点>
-  
-  
+
+
   <tbody>
   <tr>
-    <td><%= @procedure.user.name %></td>
+    <td><%#= @procedure.user.name %></td>
     <td><%= @procedure.title %></td>
-    <td><%= @procedure.body %></td>
-    <td><%= link_to "編集", edit_post_path(@procedure) %></td>
+    <td><%= image_tag @procedure.get_image(100,100) %></td>
+    <td><%= @procedure.procedure %></td>
+    <td><%= link_to "編集", edit_procedure_path(@procedure) %></td>
     <% if @procedure.bookmarked_by?(current_user) %>
       <td><%= link_to "ブックマークを外す", bookmarks_path(@procedure), method: :delete %></td>
     <% else %>

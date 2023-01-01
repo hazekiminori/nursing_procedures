@@ -21,7 +21,8 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :categories, only:[:index, :create, :edit, :update, :new, :show]
     resources :users, only:[:index, :show, :edit, :update]
-    resources :procedures
+    resources :procedures, only:[:show, :edit, :update, :create, :new]
+    get '/index/:category', to: 'procedure#index'
     resources :procedure_category_relations, only:[:create, :new, :show]
     get '/search' => 'categories#search', as:'search'
   end

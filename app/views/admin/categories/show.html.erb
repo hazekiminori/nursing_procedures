@@ -2,6 +2,10 @@
   <%= @category.name %>
 </h5>
 
- <% @category.procedures.each do |procedure| %>
-   <%= link_to procedure.title, procedure_path(procedure.id) %>
- <% end %>
+ <%# @procedures.each do |procedure| %>
+   <%#= link_to procedure.title, admin_procedure_path(procedure.id) %>
+ <%# end %>
+
+ <%= link_to "手順追加する", new_admin_procedure_path %>
+ 
+ 

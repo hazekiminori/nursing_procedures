@@ -7,15 +7,19 @@
     </tr>
   </thead>
   <tbody>
-    <% @bookmarks.each do |bookmark| %>
+    <%# @bookmarks.each do |bookmark| %>
       <tr>
         <td>
-          <%= link_to procedure_path(bookmark.post) do %>
-            <%= bookmark.procedure.title %>
-          <% end %>
+          <%#= link_to procedure_path(bookmark.post) do %>
+            <%#= bookmark.procedure.title %>
+          <%# end %>
         </td>
-        <td><%= bookmark.procedure.procedure %></td>
+        <td><%#= bookmark.procedure.procedure %></td>
       </tr>
-    <% end %>
+    <%# end %>
   </tbody>
 </table>
+
+<% @procedures.each do |procedure| %>
+  <%= procedure.title %>
+<% end %>
