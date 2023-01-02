@@ -29,9 +29,17 @@ class Admin::ProceduresController < ApplicationController
    @procedure = Procedure.find(params[:id])
    @change = Change.new
  end
+ 
+ def destroy
+   @proceudre = Procedure.find(params[:id])
+   @procedure.delete
+   redirect_to admin_categories_path
+ end
+ 
+ private
 
  def procedure_params
-    params.require(:procedure).permit(:title, :necessity_item, :image, :body, category_ids: [])
+    params.require(:procedure).permit(:title, :necessity_item, :image, :body, :category_id)
  end
 
 end

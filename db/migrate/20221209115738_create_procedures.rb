@@ -5,6 +5,7 @@ class CreateProcedures < ActiveRecord::Migration[6.1]
       t.string :title
       t.text :necessity_item
       t.text :body
+      t.integer :category_id
       t.timestamps
     end
   end

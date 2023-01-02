@@ -16,7 +16,7 @@
     <td><%#= @procedure.user.name %></td>
     <td><%= @procedure.title %></td>
     <td><%= image_tag @procedure.get_image(100,100) %></td>
-    <td><%= @procedure.procedure %></td>
+    <td><%= @procedure.body %></td>
     <td><%= link_to "編集", edit_admin_procedure_path(@procedure) %></td>
     <% if @procedure.bookmarked_by?(current_user) %>
       <td><%= link_to "ブックマークを外す", bookmarks_path(@procedure), method: :delete %></td>
@@ -25,3 +25,5 @@
     <% end %>
   </tr>
 </tbody>
+
+<%= link_to "この手順を削除する", admin_procedure_path, method: :delete %>

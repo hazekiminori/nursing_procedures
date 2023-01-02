@@ -90,6 +90,7 @@ ActiveRecord::Schema.define(version: 2022_12_23_093341) do
     t.string "title"
     t.text "necessity_item"
     t.text "body"
+    t.integer "category_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
