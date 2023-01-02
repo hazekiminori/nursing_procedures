@@ -4,7 +4,7 @@ class CreateProcedures < ActiveRecord::Migration[6.1]
       t.integer :user_id
       t.string :title
       t.text :necessity_item
-      t.text :procedure
+      t.text :body
       t.timestamps
     end
   end

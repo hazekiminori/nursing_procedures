@@ -1,6 +1,6 @@
 class Procedure < ApplicationRecord
   has_many :procedure_category_relations
-  has_many :categories, through: :procedure_category_relations
+  belongs_to :category
   #belongs_to :user
   has_many :bookmarks, dependent: :destroy
 
@@ -9,7 +9,7 @@ class Procedure < ApplicationRecord
   def bookmarked_by?(user)
     bookmarks.where(user_id: user).exists?
   end
-  
+
   def get_image(width, height)
     unless image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpeg')

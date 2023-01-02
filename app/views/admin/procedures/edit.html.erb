@@ -1,11 +1,13 @@
 <h4>手順編集ページ</h4>
-  <%= form_with model: procedures, url: admin_procedure_path do |f| %>
+  <%= form_with model: @procedure, url: admin_procedure_path, method: :patch do |f| %>
   　<p>物品配置画像</p>
     <%= f.file_field :image, accept: "image/*" %>
     <p>必要物品</p>
-    <%= f.text_area :item %>
+    <%= f.text_area :necessity_item %>
     <p>手順タイトル</p>
     <%= f.text_field :title %>
     <p>手順</p>
-    <%= f.text_area :procedyre %>
+    <%= f.text_area :body %>
+
+    <%= f.submit "編集を登録する" %>
   <% end %>

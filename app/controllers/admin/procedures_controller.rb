@@ -19,9 +19,10 @@ class Admin::ProceduresController < ApplicationController
  end
 
  def update
+   #@category = Category.find(params[:id])
    @procedure = Procedure.find(params[:id])
-   @procedure.update
-   redirect_to admin_procedure_path
+   @procedure.update(procedure_params)
+   redirect_to admin_procedure_path(@procedure.id)
  end
 
  def show
@@ -30,7 +31,7 @@ class Admin::ProceduresController < ApplicationController
  end
 
  def procedure_params
-    params.require(:procedure).permit(:title, :necessity_item, :image, :procedure, category_ids: [])
+    params.require(:procedure).permit(:title, :necessity_item, :image, :body, category_ids: [])
  end
 
 end
