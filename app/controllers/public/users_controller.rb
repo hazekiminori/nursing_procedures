@@ -8,6 +8,10 @@ class Public::UsersController < ApplicationController
     @user.update(user_params)
     redirect_to my_page_path
   end
+  
+  def mypage
+    @bookmarks = Bookmark.where(user_id: current_user.id)
+  end
 
   def show
     @user = current_user

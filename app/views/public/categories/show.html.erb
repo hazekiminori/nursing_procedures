@@ -1,5 +1,5 @@
-<h4>カテゴリー詳細</h4>
-  <% @procedures.each do |procedure| %>
+<h4><%= @category.name %>詳細</h4>
+  <% @category.procedures.each do |procedure| %>
     <%= procedure.title %>
   <% end %>
   
