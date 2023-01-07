@@ -1,5 +1,6 @@
 <h4><%= @category.name %>詳細</h4>
   <% @category.procedures.each do |procedure| %>
-    <%= procedure.title %>
+    <%= link_to procedure_path(procedure.id) do %>
+      <%= procedure.title %>
+    <% end %>
   <% end %>
-  

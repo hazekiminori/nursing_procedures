@@ -11,15 +11,15 @@ class Public::ProceduresController < ApplicationController
 
   def create
     @procedure = Procedure.new(procedure_params)
-    @procedure.user = current_user
+    @procedure.user_id = current_user.id
     @procedure.save
     redirect_to categories_path
   end
-  
+
   private
-  
+
   def procedure_params
-    params.require(:procedure).permit(:user_id, :title, :image, :necessity_item, :procedure)
+    params.require(:procedure).permit(:user_id, :title, :image, :necessity_item, :body)
   end
-  
+
 end

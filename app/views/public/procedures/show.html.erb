@@ -1,6 +1,8 @@
 <h4>手順詳細</h4>
+  <%= @procedure.title %>
   <%= image_tag @procedure.image(100,100) %>
-  <%= @procedure.item %>
+  <%= @procedure.necessity_item %>
+  <%= @procedure.body %>
   
 <div>
   <p>変更件数：<%= @procedure.change.count %></p>
