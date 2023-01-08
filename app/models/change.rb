@@ -1,4 +1,0 @@
-class Change < ApplicationRecord
-  #belongs_to user
-  #belongs_to procedure
-end

@@ -35,7 +35,7 @@ Rails.application.routes.draw do
     get 'users/quit' => 'users#quit', as:'quit';
     patch 'users/withdrawal' => 'users#withdrawal', as:'withdrawal'
     resources :procedures, only:[:new, :edit, :create, :update, :show] do
-      resources :changes, only:[:create]
+      resources :procedure_changes, only:[:create, :destroy]
     end
     resource :bookmarks, only:[:create, :destroy]
     get '/bookmarks' => 'bookmarks#index'

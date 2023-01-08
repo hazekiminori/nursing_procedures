@@ -1,11 +1,11 @@
 <h4>手順詳細</h4>
   <%= @procedure.title %>
-  <%= image_tag @procedure.image(100,100) %>
+  <%= image_tag @procedure.get_image(100,100) %>
   <%= @procedure.necessity_item %>
   <%= @procedure.body %>
-  
+
 <div>
-  <p>変更件数：<%= @procedure.change.count %></p>
+  <p>変更件数：<%= @procedure.procedure_changes.count %></p>
   <% @procedure.changes.each do |change| %>
     <p><%= change.user.name %></p>
     <%= post_comment.user.name %>
@@ -13,7 +13,7 @@
   <% end %>
 </div>
 <div>
-  <%= form_with model: [@procedure, @change] do |f| %>
+  <%= form_with model: [@procedure, @procedure_change] do |f| %>
     <%= f.text_area :change, rows: '5', placeholder: "変更点や追加点をここに記載してください" %>
     <%= f.text_area :reason, rows: '5', placeholder: "変更理由を記載してください" %>
     <%= f.submit "送信する" %>
@@ -21,19 +21,19 @@
 </div>
 
 <div>
-  <p>投稿日時：<%= @post_image.created_at.strftime('%Y/%m/%d') %></p>
-  <% if @procedure.user == current_user %>
+  <p>投稿日時：<%= @procedure.created_at.strftime('%Y/%m/%d') %></p>
+  <% if @procedure.user_id == current_user.id %>
     <%= link_to "削除", procedure_path(@procedure), method: :delete %>
   <% end %>
   <% if @procedure.bookmarked_by?(current_user) %>
     <p>
-      <%= link_to procedure_bookmarks_path(@procedure), method: :delete do %>
+      <%= link_to bookmarks_path(@procedure), method: :delete do %>
         ♥<%= @procedure.bookmarks.count %> いいね
       <% end %>
     </p>
     <% else %>
     <p>
-      <%= link_to procedure_bookmarks_path(@procedure), method: :post do %>
+      <%= link_to bookmarks_path(@procedure), method: :post do %>
         ♡<%= @procedure.bookmarks.count %> ブックマーク
       <% end %>
     </p>

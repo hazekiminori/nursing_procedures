@@ -19,23 +19,24 @@ class Admin::ProceduresController < ApplicationController
  end
 
  def update
-   #@category = Category.find(params[:id])
+   @category = Category.find(params[:id])
    @procedure = Procedure.find(params[:id])
+   @procedure.category_id = @category.id
    @procedure.update(procedure_params)
    redirect_to admin_procedure_path(@procedure.id)
  end
 
  def show
    @procedure = Procedure.find(params[:id])
-   @change = Change.new
+   @procedure_change = ProcedureChange.new
  end
- 
+
  def destroy
    @proceudre = Procedure.find(params[:id])
    @procedure.delete
    redirect_to admin_categories_path
  end
- 
+
  private
 
  def procedure_params
