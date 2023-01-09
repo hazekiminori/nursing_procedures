@@ -3,7 +3,7 @@
   <%= image_tag @procedure.get_image(100,100) %>
   <%= @procedure.necessity_item %>
   <%= @procedure.body %>
-
+<%= link_to "手順を変更する", edit_procedure_path %>
 <div>
   <p>変更件数：<%= @procedure.procedure_changes.count %></p>
   <% @procedure.changes.each do |change| %>

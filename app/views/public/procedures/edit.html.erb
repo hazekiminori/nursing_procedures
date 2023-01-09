@@ -1,7 +1,12 @@
 <h4>手順編集</h4>
-  <%= form_with model: @procedure, procedure_path do |f| %>
+  <%= form_with model: @procedure, local: true, url: procedure_path, method: :patch do |f| %>
+    <p>手順タイトル</p>
+    <%= f.text_field :title %>
+    <p>物品配置画像</p>
     <%= f.file_field :image, placeholder: "物品配置画像", accept:"image/*" %>
-    <%= f.text_area :item %>
-    <%= f.text_area :procedure %>
+    <p>必要物品</p>
+    <%= f.text_area :necessity_item %>
+    <p>手順本文</p>
+    <%= f.text_area :body %>
     <%= f.submit "変更を確定する" %>
   <% end %>

@@ -2,7 +2,7 @@ class Public::ProceduresController < ApplicationController
 
   def show
     @procedure = Procedure.find(params[:id])
-    @change = ProcedureChange.new
+    @procedure_change = ProcedureChange.new
   end
 
   def new
@@ -14,6 +14,15 @@ class Public::ProceduresController < ApplicationController
     @procedure.user_id = current_user.id
     @procedure.save
     redirect_to categories_path
+  end
+
+  def edit
+  end
+
+  def update
+    @procedure = Procedure.find(params[:id])
+    @procedure.update(procedure_params)
+    redirect_to procedure_path(@procedure)
   end
 
   private
