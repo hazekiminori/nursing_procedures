@@ -18,5 +18,20 @@ class Procedure < ApplicationRecord
     end
     image.variant(resize_to_limit: [width, height]).processed
   end
+  
+  # 検索方法分岐
+  def self.looks(search, word)
+    if search == "perfect_match"
+      @procedure = Procedure.where("title LIKE?","#{word}")
+    elsif search == "forward_match"
+      @procedure = Procedure.where("title LIKE?","#{word}%")
+    elsif search == "backward_match"
+      @procedure = Procedure.where("title LIKE?","%#{word}")
+    elsif search == "partial_match"
+      @procedure = Procedure.where("title LIKE?","%#{word}%")
+    else
+      @procedure = Procedure.all
+    end
+  end
 
 end

@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
   root to: "public/homes#top"
   get '/admin' => 'admin/homes#top'
-
+  get "/search" => "searches#search"
 
   namespace :admin do
     resources :categories, only:[:index, :create, :edit, :update, :new, :show]
@@ -24,7 +24,6 @@ Rails.application.routes.draw do
     resources :procedures, only:[:show, :edit, :update, :create, :new, :destroy]
     get '/index/:category', to: 'procedure#index'
     resources :procedure_category_relations, only:[:create, :new, :show]
-    get '/search' => 'categories#search', as:'search'
   end
 
   scope module: :public do
@@ -40,7 +39,6 @@ Rails.application.routes.draw do
     resource :bookmarks, only:[:create, :destroy]
     get '/bookmarks' => 'bookmarks#index'
     delete 'bookmarks/destroy_all' => 'bookmarks#destroy_all', as:'destroy_all'
-    get '/search' => 'categories#search', as:'search'
     resources :procedure_category_relations, only:[:create, :new, :show]
   end
 
