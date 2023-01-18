@@ -5,23 +5,23 @@
 <%# end %>
     <%= form_with model: @procedure, local: true, url: admin_procedures_path, method: :post do |f| %>
         <div class="form_input">
-            <%= f.label :title %>
+            <%= f.label :title, "手順タイトル" %>
             <%= f.text_field :title, class: "form-control" %>
         </div>
         <div class="form_input">
-            <%= f.label :image %>
+            <%= f.label :image, "物品配置画像" %>
             <%= f.file_field :image, class: "form-control" %>
         </div>
         <div class="form_input">
-            <%= f.label :necessity_item %>
+            <%= f.label :necessity_item, "必要物品" %>
             <%= f.text_area :necessity_item, class: "form-control" %>
         </div>
         <div class="form_input">
-            <%= f.label :procedure %>
+            <%= f.label :procedure, "手順" %>
             <%= f.text_area :body, class: "form-control" %>
         </div>
         <div class="form_input">
-            <%= f.label :category_id %>
+            <%= f.label :category_id, "カテゴリー選択" %>
             <%= f.collection_select :category_id, Category.all, :id, :name,
                                                             :include_blank => "カテゴリを選択してください" %>
         </div>

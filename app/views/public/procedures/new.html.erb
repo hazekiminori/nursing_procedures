@@ -1,35 +1,29 @@
 <h4>手順新規作成画面</h4>
 
 <%= form_with model: @procedure, url: procedures_path, method: :post do |f| %>
-  <p>
-    <%= f.label :title, '手順タイトル' %>
-    <%= f.text_field :title %>
-  </p>
-
-  <p>
-    <%= f.label :image, '物品配置画像' %>
-    <%= f.file_field :image %>
-  </p>
-
-  <p>
-    <%= f.label :necessity_item, '必要物品' %>
-    <%= f.text_area :necessity_item %>
-  </p>
-
-  <p>
-    <%= f.label :procedure, '手順'%>
-    <%= f.text_area :procedure %>
-  </p>
-
-  <p>
-    <%#= f.label :category, 'カテゴリ' %>
-    <%#= f.collection_check_boxes(:category_ids, Category.all, :id, :name) do |category| %>
-      <%#= category.label do %>
-        <%#= category.check_box %>
-        <%#= category.text %>
-      <%# end %>
-    <%# end %>
-  </p>
-
-  <%= f.submit '手順登録する' %>
-<% end %>
+  <div class="form_input">
+            <%= f.label :title, "手順タイトル" %>
+            <%= f.text_field :title, class: "form-control" %>
+        </div>
+        <div class="form_input">
+            <%= f.label :image, "物品配置画像" %>
+            <%= f.file_field :image, class: "form-control" %>
+        </div>
+        <div class="form_input">
+            <%= f.label :necessity_item, "必要物品" %>
+            <%= f.text_area :necessity_item, class: "form-control" %>
+        </div>
+        <div class="form_input">
+            <%= f.label :procedure, "手順" %>
+            <%= f.text_area :body, class: "form-control" %>
+        </div>
+        <div class="form_input">
+            <%= f.label :category_id, "カテゴリー選択" %>
+            <%= f.collection_select :category_id, Category.all, :id, :name,
+                                                            :include_blank => "カテゴリを選択してください" %>
+        </div>
+        <div class="form_action row">
+            <%= f.submit "作成する" %>
+        </div>
+    <% end %>
+  </div>
