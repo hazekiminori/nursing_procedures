@@ -69,13 +69,6 @@ ActiveRecord::Schema.define(version: 2023_01_08_121810) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "procedure_category_relations", force: :cascade do |t|
-    t.integer "procedure_id"
-    t.integer "category_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "procedure_changes", force: :cascade do |t|
     t.integer "procedure_id"
     t.integer "user_id"
