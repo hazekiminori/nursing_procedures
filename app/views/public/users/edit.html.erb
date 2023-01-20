@@ -2,9 +2,9 @@
 
 <%= form_with model: @user, url: users_infomation_path, method: :patch do |f| %>
   <p>職員番号</p>
-  <%= f.number_field :staff_number %>
+    <%= f.number_field :staff_number %>
   <p>氏名</p>
-  <%= f.text_field :name %>
+    <%= f.text_field :name %>
   <div><%= f.submit "編集登録する" %></div>
 <% end %>
 
