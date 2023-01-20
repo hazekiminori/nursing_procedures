@@ -1,14 +1,11 @@
-<h4>カテゴリー一覧</h4>
-　<% @categories.each do |category| %>
-    <%= link_to category.name, admin_category_path(category.id) %>
-  <% end %>
-
-<h5>カテゴリー検索</h5>
-   <div class="search-form">
-  <%= form_with url: search_path, method: :get, local: true do |f| %>
-    <%= f.text_field :keyword, value: @keyword %>
-    <%= f.submit "検索" %>
-  <% end %>
+<div class="container">
+  <h4>カテゴリー一覧</h4>
+    <div>
+　    <% @categories.each do |category| %>
+        <%= link_to category.name, admin_category_path(category.id) %>
+      <% end %>
+    </div>
+    <div>
+      <%= link_to "カテゴリー追加する", new_admin_category_path %>
+    </div>
 </div>
-
-<%= link_to "カテゴリー追加する", new_admin_category_path %>
