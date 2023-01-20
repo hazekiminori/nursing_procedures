@@ -1,0 +1,14 @@
+<div class ="container">
+  <%= form_with model: @user, url: admin_user_path do |f| %>
+    <p>利用者氏名</p>
+      <%= f.text_field :name %>
+    <p>職員番号</p>
+      <%= f.number_field :staff_number %>
+    <p>利用者ステータス</p>
+      <%= f.radio_button :is_deleted, "false" %>
+      <%= f.label :is_deleted, "有効", value: false %>
+      <%= f.radio_button :is_deleted, "true" %>
+      <%= f.label :is_deleted, "無効", value: true %>
+    <%= f.submit "編集結果を保存する" %>
+  <% end %>
+</div>

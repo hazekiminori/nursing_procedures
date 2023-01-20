@@ -11,11 +11,12 @@ class Admin::ProceduresController < ApplicationController
  def create
    #@categpry = Category.find(params[:id])
    @procedure = Procedure.new(procedure_params)
-    @procedure.save
+   @procedure.save
      redirect_to admin_procedure_path(@procedure.id), notice: "登録が完了しました"
  end
 
  def edit
+   @procedure = Procedure.find(params[:id])
  end
 
  def update

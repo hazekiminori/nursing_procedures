@@ -8,6 +8,10 @@ class Admin::UsersController < ApplicationController
     @user = User.find(params[:id])
   end
   
+  def edit
+    @user = User.find(params[:id])
+  end
+  
   def update
     @user = User.find(params[:id])
     @user.update(user_params)
@@ -17,7 +21,7 @@ class Admin::UsersController < ApplicationController
   private
   
   def user_params
-    params.require(:user).permit(:is_deleted)
+    params.require(:user).permit(:name, :staff_number, :is_deleted)
   end
 
 end
