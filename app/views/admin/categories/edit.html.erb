@@ -1,5 +1,8 @@
-<h4>カテゴリー編集</h4>
-  <%= form_with model: categories, url: categories_path, method: :patch do |f| %>
-    <p>カテゴリータイトル</p>
-    <%= f.text_field :title %>
-  <% end %>
+<div class = "container">
+  <h4>カテゴリー編集</h4>
+    <%= form_with model: @category, url: admin_category_path, method: :patch do |f| %>
+      <p>カテゴリー名</p>
+        <%= f.text_field :name %>
+        <%= f.submit "編集する" %>
+    <% end %>
+</div>
