@@ -4,19 +4,21 @@ class Public::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
   before_action :ensure_normal_user, only: :destroy
+  
+  def after_sign_up_path_for(resource)
+    my_page_path
+  end
 
   def ensure_normal_user
     if resource.email == 'guest@example.com'
       redirect_to root_path, alert: 'ゲストユーザーは削除できません。'
     end
   end
-
+  
+  protected
+  
   def configure_sign_up_params
     devise_parameter_sanitizer.permit(:sign_up, keys: [:email])
-  end
-
-  def after_sign_up_path_for(resource)
-    categories_path
   end
 
   # GET /resource/sign_up

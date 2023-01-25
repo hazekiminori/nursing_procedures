@@ -1,7 +1,13 @@
-<h4>カテゴリー一覧</h4>
-
-　<% @categories.each do |category| %>
-    <%= link_to category.name, category_path(category.id) %>
-  <% end %>
-
+<div class="container">
+  <h4>カテゴリー一覧</h4>
+    <table>
+      <tbody>
+        <td>
+          <% @categories.each do |category| %>
+            <%= link_to category.name, category_path(category.id) %>
+          <% end %>
+        </td>
+      </tbody>
+    </table>
+</div>
   
