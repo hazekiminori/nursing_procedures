@@ -1,6 +1,6 @@
 <h4>手順新規作成画面</h4>
 
-<%= form_with model: @procedure, url: procedures_path, method: :post do |f| %>
+<%= form_with model: @procedure, local: true, url: procedures_path, method: :post do |f| %>
     <%= f.label :title, "手順タイトル" %>
       <%= f.text_field :title %>
     <%= f.label :image, "物品配置画像" %>
@@ -10,8 +10,7 @@
     <%= f.label :procedure, "手順" %>
       <%= f.text_area :body %>
     <%= f.label :category_id, "カテゴリー選択" %>
-      <%= f.collection_select :category_id, Category.all, :id, :name,
-                                                            :include_blank => "カテゴリを選択してください" %>
+      <%= f.collection_select :category_id, Category.all, :id, :name, :include_blank => "カテゴリを選択してください" %>
     <%= f.submit "作成する" %>
     <% end %>
   </div>

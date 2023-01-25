@@ -8,5 +8,7 @@
     <%= f.text_area :necessity_item %>
     <p>手順本文</p>
     <%= f.text_area :body %>
+      <%= f.label :category_id, "カテゴリー選択" %>
+        <%= f.collection_select :category_id, Category.all, :id, :name, :include_blank => "カテゴリを選択してください" %>
     <%= f.submit "変更を確定する" %>
   <% end %>

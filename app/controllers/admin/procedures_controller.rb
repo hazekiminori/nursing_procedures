@@ -10,9 +10,13 @@ class Admin::ProceduresController < ApplicationController
 
  def create
    #@categpry = Category.find(params[:id])
+   @procedure.id = admin_id
    @procedure = Procedure.new(procedure_params)
-   @procedure.save
-     redirect_to admin_procedure_path(@procedure.id), notice: "登録が完了しました"
+    if @procedure.save!
+      redirect_to admin_procedure_path(@procedure), notice: "登録が完了しました"
+    else
+      render :new
+    end
  end
 
  def edit
@@ -20,9 +24,9 @@ class Admin::ProceduresController < ApplicationController
  end
 
  def update
-   @category = Category.find(params[:id])
+   #@category = Category.find(params[:id])
    @procedure = Procedure.find(params[:id])
-   @procedure.category_id = @category.id
+  #@procedure.category_id = @category.id
    @procedure.update(procedure_params)
    redirect_to admin_procedure_path(@procedure.id)
  end
@@ -41,7 +45,7 @@ class Admin::ProceduresController < ApplicationController
  private
 
  def procedure_params
-    params.require(:procedure).permit(:title, :necessity_item, :image, :body, :category_id)
+    params.require(:procedure).permit(:user_id, :title, :necessity_item, :image, :body, :category_id)
  end
 
 end

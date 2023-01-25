@@ -23,8 +23,7 @@
         </div>
         <div class="form_input">
             <%= f.label :category_id, "カテゴリー選択" %>
-            <%= f.collection_select :category_id, Category.all, :id, :name,
-                                                            :include_blank => "カテゴリを選択してください" %>
+            <%= f.collection_select :category_id, Category.all, :id, :name, :include_blank => "カテゴリを選択してください" %>
         </div>
         <div class="form_action row">
             <%= f.submit "作成する" %>
