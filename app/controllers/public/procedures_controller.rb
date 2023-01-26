@@ -20,6 +20,7 @@ class Public::ProceduresController < ApplicationController
   end
 
   def edit
+    @procedure = Procedure.find(params[:id])
   end
 
   def update

@@ -7,22 +7,17 @@ class Public::BookmarksController < ApplicationController
   
   def create
     @procedure = Procedure.find(params[:procedure_id])
-    bookmark = @procedure.bookmarks.new(user_id: current_user.id)
-    if bookmark.save
-      redirect_to request.referer
-    else
-      redirect_to request.referer
-    end
+    bookmark = current_user.bookmarks.new(procedure_id: @procedure.id)
+    #@procedure.bookmarks.new(user_id: current_user.id)
+    bookmark.save
+    redirect_to procedure_path(@procedure)
   end
 
   def destroy
     @procedure = Procedure.find(params[:procedure_id])
-    bookmark = @post.bookmarks.find_by(user_id: current_user.id)
-    if bookmark.present?
+    bookmark = current_user.bookmarks.find_by(procedure_id: @procedure.id)
+    #bookmark = @post.bookmarks.find_by(user_id: current_user.id)
         bookmark.destroy
-        redirect_to request.referer
-    else
-        redirect_to request.referer
-    end
+        redirect_to procedure_path(@procedure)
   end
 end

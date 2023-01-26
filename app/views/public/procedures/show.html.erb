@@ -1,41 +1,51 @@
-<h4>手順詳細</h4>
-  <%= @procedure.title %>
-  <%= image_tag @procedure.get_image(100,100) %>
-  <%= @procedure.necessity_item %>
-  <%= @procedure.body %>
-<%= link_to "手順を変更する", edit_procedure_path %>
-<div>
-  <p>変更件数：<%= @procedure.procedure_changes.count %></p>
-  <% @procedure.changes.each do |change| %>
-    <p><%= change.user.name %></p>
-    <%= post_comment.user.name %>
-    <%= post_comment.created_at.strftime('%Y/%m/%d') %><%= post_comment.comment %>
-  <% end %>
-</div>
-<div>
-  <%= form_with model: [@procedure, @procedure_change] do |f| %>
-    <%= f.text_area :change, rows: '5', placeholder: "変更点や追加点をここに記載してください" %>
-    <%= f.text_area :reason, rows: '5', placeholder: "変更理由を記載してください" %>
-    <%= f.submit "送信する" %>
-  <% end %>
-</div>
+<div class="container">
+  <div class="row">
+    <h4>手順詳細</h4>
+      <div><%= @procedure.title %></div>
+      <div><%= image_tag @procedure.get_image(100,100) %></div>
+      <div><%= @procedure.necessity_item %></div>
+      <div><%= @procedure.body %></div>
+        <div><%= link_to "手順を変更する", edit_procedure_path %></div>
+  </div>
+  
+  <div clas="row">
+    <p>変更件数：<%= @procedure.procedure_changes.count %></p>
+      <% @procedure.procedure_changes.each do |change| %>
+        <p>変更者氏名</p>
+        <p><%= change.user.name %></p>
+        <p>変更点</p>
+        <p><%= change.change %></p>
+        <p>変更理由</p>
+        <p><%= change.reason %></p>
+        <p>変更日時</p>
+        <p><%= change.created_at.strftime('%Y/%m/%d') %></p>
+      <% end %>
+  </div>
+  <div class="row">
+    <%= form_with model: [@procedure, @procedure_change] do |f| %>
+      <p><%= f.text_area :change, rows: '5', placeholder: "変更点や追加点をここに記載してください" %></p>
+      <p><%= f.text_area :reason, rows: '5', placeholder: "変更理由を記載してください" %></p>
+        <%= f.submit "送信する" %>
+    <% end %>
+  </div>
 
-<div>
-  <p>投稿日時：<%= @procedure.created_at.strftime('%Y/%m/%d') %></p>
-  <% if @procedure.user_id == current_user.id %>
-    <%= link_to "削除", procedure_path(@procedure), method: :delete %>
-  <% end %>
-  <% if @procedure.bookmarked_by?(current_user) %>
-    <p>
-      <%= link_to bookmarks_path(@procedure), method: :delete do %>
-        ♥<%= @procedure.bookmarks.count %> いいね
+  <div class="row">
+    <p>投稿日時：<%= @procedure.created_at.strftime('%Y/%m/%d') %></p>
+      <% if @procedure.user_id == current_user.id %>
+        <%= link_to "削除", procedure_path(@procedure), method: :delete %>
       <% end %>
-    </p>
-    <% else %>
-    <p>
-      <%= link_to bookmarks_path(@procedure), method: :post do %>
-        ♡<%= @procedure.bookmarks.count %> ブックマーク
-      <% end %>
-    </p>
-  <% end %>
+        <% if @procedure.bookmarked_by?(current_user) %>
+          <p>
+            <%= link_to procedure_bookmarks_path(@procedure), method: :delete do %>
+            ♥<%= @procedure.bookmarks.count %> いいね
+            <% end %>
+          </p>
+        <% else %>
+          <p>
+            <%= link_to procedure_bookmarks_path(@procedure), method: :post do %>
+             ♡<%= @procedure.bookmarks.count %> ブックマーク
+            <% end %>
+          </p>
+        <% end %>
+  </div>
 </div>

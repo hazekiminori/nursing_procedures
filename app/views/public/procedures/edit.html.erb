@@ -1,14 +1,16 @@
-<h4>手順編集</h4>
-  <%= form_with model: @procedure, local: true, url: procedure_path, method: :patch do |f| %>
-    <p>手順タイトル</p>
-    <%= f.text_field :title %>
-    <p>物品配置画像</p>
-    <%= f.file_field :image, placeholder: "物品配置画像", accept:"image/*" %>
-    <p>必要物品</p>
-    <%= f.text_area :necessity_item %>
-    <p>手順本文</p>
-    <%= f.text_area :body %>
-      <%= f.label :category_id, "カテゴリー選択" %>
-        <%= f.collection_select :category_id, Category.all, :id, :name, :include_blank => "カテゴリを選択してください" %>
-    <%= f.submit "変更を確定する" %>
-  <% end %>
+<div class="container">
+  <h4>手順編集</h4>
+    <%= form_with model: @procedure, local: true, url: procedure_path, method: :patch do |f| %>
+      <p>手順タイトル</p>
+        <%= f.text_field :title %>
+      <p>物品配置画像</p>
+        <%= f.file_field :image, placeholder: "物品配置画像", accept:"image/*" %>
+      <p>必要物品</p>
+        <%= f.text_area :necessity_item %>
+      <p>手順本文</p>
+        <%= f.text_area :body %>
+          <%= f.label :category_id, "カテゴリー選択" %>
+            <%= f.collection_select :category_id, Category.all, :id, :name, :include_blank => "カテゴリを選択してください" %>
+        <%= f.submit "変更を確定する" %>
+    <% end %>
+</div>

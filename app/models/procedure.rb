@@ -8,7 +8,7 @@ class Procedure < ApplicationRecord
   has_one_attached :image
 
   def bookmarked_by?(user)
-    bookmarks.where(user_id: user).exists?
+    bookmarks.exists?(user_id: user.id)
   end
 
   def get_image(width, height)
