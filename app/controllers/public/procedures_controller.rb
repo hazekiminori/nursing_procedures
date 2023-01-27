@@ -34,7 +34,7 @@ class Public::ProceduresController < ApplicationController
   private
 
   def procedure_params
-    params.require(:procedure).permit(:caegory_id, :user_id, :title, :image, :necessity_item, :body)
+    params.require(:procedure).permit(:category_id, :user_id, :title, :image, :necessity_item, :body)
   end
 
 end
