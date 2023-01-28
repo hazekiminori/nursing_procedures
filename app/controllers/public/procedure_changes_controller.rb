@@ -18,7 +18,7 @@ class Public::ProcedureChangesController < ApplicationController
   
   def ensure_normal_user
     if resource.email == 'guest@example.com'
-      redirect_to root_path, alert: 'ゲストユーザーは削除できません。'
+      redirect_to root_path, notice: 'このページを見るためには会員登録が必要です'
     end
   end
 
