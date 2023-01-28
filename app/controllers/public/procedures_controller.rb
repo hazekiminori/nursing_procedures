@@ -1,4 +1,5 @@
 class Public::ProceduresController < ApplicationController
+  before_action :ensure_normal_user, only:[:new, :create, :edit, :update]
 
   def show
     @procedure = Procedure.find(params[:id])
@@ -32,9 +33,16 @@ class Public::ProceduresController < ApplicationController
   end
 
   private
+  
+  def ensure_normal_user
+    if current_user.email == 'guest@example.com'
+      redirect_to root_path, alert: 'ゲストユーザーは削除できません。'
+    end
+  end
+  
 
   def procedure_params
     params.require(:procedure).permit(:category_id, :user_id, :title, :image, :necessity_item, :body)
   end
-
+  
 end

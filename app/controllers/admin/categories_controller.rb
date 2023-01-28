@@ -34,6 +34,12 @@ class Admin::CategoriesController < ApplicationController
       render :edit
     end
   end
+  
+  def destroy
+    @category = Category.find(params[:id])
+    @category.destroy
+    redirect_to admin_categories_path
+  end
 
   def search
     @categories = Category.search(params[:keyword])

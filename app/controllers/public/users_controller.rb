@@ -1,4 +1,6 @@
 class Public::UsersController < ApplicationController
+  before_action :authenticate_user!
+  before_action :ensure_normal_user
 
   def edit
     @user = current_user
@@ -29,6 +31,12 @@ class Public::UsersController < ApplicationController
   end
   
   private
+  
+  def ensure_normal_user
+    if resource.email == 'guest@example.com'
+      redirect_to root_path, alert: 'ゲストユーザーは削除できません。'
+    end
+  end
   
   def user_params
     params.require(:user).permit(:name, :staff_number)

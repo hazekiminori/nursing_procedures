@@ -19,6 +19,8 @@ class Procedure < ApplicationRecord
     image.variant(resize_to_limit: [width, height]).processed
   end
   
+  
+  
   # 検索方法分岐
   def self.looks(search, word)
     if search == "perfect_match"

@@ -19,11 +19,13 @@ Rails.application.routes.draw do
   get "/search" => "searches#search"
 
   namespace :admin do
-    resources :categories, only:[:index, :create, :edit, :update, :new, :show]
+    resources :categories, only:[:index, :create, :edit, :update, :new, :show, :destroy]
     resources :users, only:[:index, :show, :edit, :update]
-    resources :procedures, only:[:show, :edit, :update, :create, :new, :destroy]
+    resources :procedures, only:[:show, :edit, :update, :create, :new, :destroy] do
+      resources :procedure_changes, only:[:destroy]
+    end
     get '/index/:category', to: 'procedure#index'
-    resources :procedure_category_relations, only:[:create, :new, :show]
+    #resources :procedure_category_relations, only:[:create, :new, :show]
   end
 
   scope module: :public do
@@ -42,7 +44,7 @@ Rails.application.routes.draw do
     
     get '/bookmarks' => 'bookmarks#index'
     delete 'bookmarks/destroy_all' => 'bookmarks#destroy_all', as:'destroy_all'
-    resources :procedure_category_relations, only:[:create, :new, :show]
+    #resources :procedure_category_relations, only:[:create, :new, :show]
   end
 
 end

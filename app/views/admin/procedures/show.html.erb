@@ -1,29 +1,46 @@
-<h4>手順詳細</h4>
-  <p>手順タイトル</p>
-    <%= @procedure.title %>
-  <p>物品配置画像</p>
-    <%= image_tag @procedure.get_image(100,100) %>
-  <p>必要物品</p>
-    <%= @procedure.necessity_item %>
-  <p>手順</p>
-    <%= @procedure.body %>
-
-  <変更点、追加点>
-
-
-  <tbody>
-  <tr>
-    <td><%#= @procedure.user.name %></td>
-    <td><%= @procedure.title %></td>
-    <td><%= image_tag @procedure.get_image(100,100) %></td>
-    <td><%= @procedure.body %></td>
-    <td><%= link_to "編集", edit_admin_procedure_path(@procedure) %></td>
-    <% if @procedure.bookmarked_by?(current_user) %>
-      <td><%= link_to "ブックマークを外す", bookmarks_path(@procedure), method: :delete %></td>
-    <% else %>
-      <td><%= link_to "ブックマーク", bookmarks_path(@procedure), method: :post %></td>
+<div class="container">
+  <h4>手順詳細</h4>
+  <table>
+    <thead>
+      <tr>
+        <th>手順タイトル</th>
+        <th>物品配置画像</th>
+        <th>必要物品</th>
+        <th>手順</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= @procedure.title %></td>
+        <td><%= image_tag @procedure.get_image(100,100) %></td>
+        <td><%= @procedure.necessity_item %></td>
+        <td><%= @procedure.body %></td>
+      </tr>
+    </tbody>
+  </table>
+  <table>
+    <% @procedure.procedure_changes.each do |change| %>
+    <thead>
+      <tr>
+        <th>変更理由</th>
+        <th>変更点</th>
+        <th>変更、追加理由</th>
+        <th>変更日時</th>
+        <th>削除する</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= change.user.name %></td>
+        <td><%= change.change %></td>
+        <td><%= change.reason %></td>
+        <td><%= change.created_at.strftime('%Y/%m/%d') %></td>
+        <td><%= link_to "削除する", admin_procedure_procedure_change_path(change), method: :delete %></td>
+      </tr>
+    </tbody>
     <% end %>
-  </tr>
-</tbody>
+  </table>
+  <%= link_to "手順を編集する", edit_admin_procedure_path %>
+  <%= link_to "この手順を削除する", admin_procedure_path, method: :delete %>
 
-<%= link_to "この手順を削除する", admin_procedure_path, method: :delete %>
+</div>
