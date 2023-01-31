@@ -18,7 +18,12 @@
     <header>
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
-          <span>Nursing procedures</span>
+          <span>
+            <%= link_to root_path do %>
+              <i class="fa-solid fa-book-medical"></i>
+                Nursing procedures
+            <% end %>
+          </span>
             <button class="navbar-toggler"
                     type="button"
                     data-toggle="collapse"
@@ -70,8 +75,10 @@
       </nav>
     </header>
     <main>
-      <%= yield %>
-      <%= flash[:notice] %>
+      <div class="container">
+        <%= flash[:notice] %>
+        <%= yield %>
+      </div>
     </main>
     <footer>
       <div class="container mt-5">

@@ -5,8 +5,11 @@ class Public::ProcedureChangesController < ApplicationController
     @procedure = Procedure.find(params[:procedure_id])
     @procedure_change = current_user.procedure_changes.new(procedure_change_params)
     @procedure_change.procedure_id = @procedure.id
-    @procedure_change.save
-    redirect_to procedure_path(@procedure)
+    if @procedure_change.save
+      redirect_to procedure_path(@procedure)
+    else
+      redirect_to procedure_path(@procedure), notice: "※変更点・追加点、変更・追加理由を入力してください"
+    end
   end
 
   def destroy
@@ -17,7 +20,7 @@ class Public::ProcedureChangesController < ApplicationController
   private
   
   def ensure_normal_user
-    if resource.email == 'guest@example.com'
+    if current_user.email == 'guest@example.com'
       redirect_to root_path, notice: 'このページを見るためには会員登録が必要です'
     end
   end

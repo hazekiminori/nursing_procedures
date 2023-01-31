@@ -1,14 +1,39 @@
 <div class="container">
-  <h4>マイページ</h4>
-    <div><%= @user.staff_number %></div>
-    <div><%= @user.name %></div>
-
+    <h4>マイページ</h4>
+  <div class ="row">
+    <table>
+      <tbody>
+        <tr>
+          <td>職員番号</td>
+          <td><%= @user.staff_number %></td>
+        </tr>
+        <tr>
+          <td>氏名</td>
+          <td><%= @user.name %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class ="row">
      <div><%= link_to "登録情報編集", edit_users_path %></div>
      <div><%= link_to "ブックマーク一覧", bookmarks_path %></div>
-     
-  <h6>作成した手順一覧</h6>
-    <% @user.procedures.each do |procedure| %>
-      <%= procedure.title %>
-    <% end %>
-  
+  </div>
+  <div class="row">
+    <table>
+      <thead>
+        <tr>
+          <th>作成した手順一覧</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <% @user.procedures.each do |procedure| %>
+              <%= link_to procedure.title, procedure_path(procedure) %>
+            <% end %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

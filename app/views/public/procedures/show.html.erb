@@ -4,10 +4,10 @@
       <table>
         <thaed>
           <tr>
-            <th>手順タイトル</th>
-            <th>物品配置画像</th>
-            <th>必要物品</th>
-            <th>手順</th>
+            <th class="col-2">手順タイトル</th>
+            <th class="col-2">物品配置画像</th>
+            <th class="col-2">必要物品</th>
+            <th class="col-6">手順</th>
           </tr>
         </thaed>
         <tbody>
@@ -23,29 +23,30 @@
   </div>
   
   <div clas="row">
-    <p>変更件数：<%= @procedure.procedure_changes.count %></p>
         <table>
-          <% @procedure.procedure_changes.each do |change| %>
           <thead>
             <tr>
-              <th>変更者氏名</th>
-              <th>変更点</th>
-              <th>変更理由</th>
-              <th>変更日時</th>
+              <th class ="col-2">変更者氏名</th>
+              <th class ="col-4">変更点</th>
+              <th class ="col-4">変更理由</th>
+              <th class ="col-2">変更日時</th>
             </tr>
           </thead>
           <tbody>
+            <% @procedure.procedure_changes.each do |change| %>
             <tr>
                 <td><%= change.user.name %></td>
                 <td><%= change.change %></td>
                 <td><%= change.reason %></td>
                 <td><%= change.created_at.strftime('%Y/%m/%d') %></td>
             </tr>
+            <% end %>
           </tbody>
-          <% end %>
         </table>
+            <p>変更件数：<%= @procedure.procedure_changes.count %></p>
   </div>
-  <div class="row">
+  <div class="row mt-2">
+    
     <%= form_with model: [@procedure, @procedure_change] do |f| %>
       <div class="col-4">
         <p><%= f.text_area :change, rows: '5', placeholder: "変更点や追加点をここに記載してください" %></p>
@@ -59,9 +60,6 @@
 
   <div class="row">
     <p>投稿日時：<%= @procedure.created_at.strftime('%Y/%m/%d') %></p>
-      <%# if @procedure.user_id == current_user.id %>
-        <%#= link_to "削除", procedure_path(@procedure), method: :delete do %>
-      <%# end %>
         <% if @procedure.bookmarked_by?(current_user) %>
           <p>
             <%= link_to procedure_bookmarks_path(@procedure), method: :delete do %>
