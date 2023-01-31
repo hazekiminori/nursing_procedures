@@ -31,10 +31,9 @@ Rails.application.routes.draw do
   scope module: :public do
     resources :categories, only:[:index, :show]
     get '/users/my_page' => 'users#show', as:'my_page'
-    resource :users, only:[:update, :show]
+    resource :users, only:[:show]
+    patch '/users/information' => 'users#update', as:'update_users'
     get '/users/information/edit' =>'users#edit', as:'edit_users'
-    #get '/users/information/edit' => 'users#edit'
-    #patch '/users/information' => 'users#update'
     get 'users/quit' => 'users#quit', as:'quit';
     patch 'users/withdrawal' => 'users#withdrawal', as:'withdrawal'
     resources :procedures, only:[:new, :edit, :create, :update, :show] do
