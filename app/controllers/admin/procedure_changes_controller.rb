@@ -9,9 +9,9 @@ class Admin::ProcedureChangesController < ApplicationController
   end
 
   def destroy
-    @procedure_change = ProcedureChange.find(params[:id])
-    @procedure_change.destroy
-    redirect_to admin_procedures_path(params[:procedure_id])
+    @procedure = Procedure.find(params[:id])
+    ProcedureChange.find(params[:procedure_id]).destroy
+    redirect_to admin_procedure_path(params[:procedure_id])
   end
 
   private

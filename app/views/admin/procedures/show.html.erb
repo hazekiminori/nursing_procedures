@@ -35,7 +35,7 @@
         <td><%= change.change %></td>
         <td><%= change.reason %></td>
         <td><%= change.created_at.strftime('%Y/%m/%d') %></td>
-        <td><%= link_to "削除する", admin_procedure_procedure_change_path(change), method: :delete %></td>
+        <td><%= link_to "削除する", admin_procedure_procedure_changes_path(change), method: :delete %></td>
       </tr>
     </tbody>
     <% end %>

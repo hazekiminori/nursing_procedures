@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Public::SessionsController < Devise::SessionsController
-  # before_action :configure_sign_in_params, only: [:create]
+  before_action :configure_sign_in_params, only: [:create]
   before_action :user_state, only:[:create]
 
   def adter_sign_out_path_for(resource)
@@ -48,12 +48,13 @@ class Public::SessionsController < Devise::SessionsController
   end
 
    def user_state
-     @user = User.find_by(email: params[:user][:email])
+      @user = User.find_by(email: params[:user][:email])
 
-    return if !@user
-
-    if @user.valid_password?(params[:user][:password])
-      @user.is_deleted && !false
+    if !@user.is_deleted
+      if @user.valid_password?(params[:user][:password])
+         redirect_to new_user_session_path
+      end
+    else
       redirect_to new_user_registration_path
     end
    end
