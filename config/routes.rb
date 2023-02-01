@@ -22,7 +22,7 @@ Rails.application.routes.draw do
     resources :categories, only:[:index, :create, :edit, :update, :new, :show, :destroy]
     resources :users, only:[:index, :show, :edit, :update]
     resources :procedures, only:[:show, :edit, :update, :create, :new, :destroy] do
-      delete '/procedure_changes' => 'procedure_changes#destroy'
+      resources :procedure_changes, only: [:destroy]
     end
     get '/index/:category', to: 'procedure#index'
     #resources :procedure_category_relations, only:[:create, :new, :show]
