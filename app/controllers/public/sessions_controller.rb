@@ -47,16 +47,18 @@ class Public::SessionsController < Devise::SessionsController
      devise_parameter_sanitizer.permit(:sign_in, keys: [:email])
   end
 
-   def user_state
+  def user_state
       @user = User.find_by(email: params[:user][:email])
 
     if !@user.is_deleted
       if @user.valid_password?(params[:user][:password])
+         redirect_to root_path
+      else
          redirect_to new_user_session_path
       end
     else
       redirect_to new_user_registration_path
     end
-   end
+  end
 
 end
