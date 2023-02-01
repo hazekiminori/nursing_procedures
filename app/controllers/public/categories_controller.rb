@@ -1,4 +1,5 @@
 class Public::CategoriesController < ApplicationController
+  efore_action :authenticate_user! 
 
   def index
     @categories = Category.all
