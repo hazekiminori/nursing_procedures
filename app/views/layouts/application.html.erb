@@ -17,7 +17,7 @@
 
   <body>
     <header>
-      <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#fdf5e6;">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
           <span>
             <%= link_to root_path do %>
@@ -37,36 +37,69 @@
               <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav ml-auto">
                   <% if user_signed_in? %>
-                    <li class="nav-item">
-                      <%= link_to "カテゴリー一覧", categories_path %></li>
-                    <li class="nav-item">
-                      <%= link_to 'ブックマーク一覧', bookmarks_path %></li>
-                    <li class="nav-item">
-                      <%= link_to '手順作成', new_procedure_path %></li>
-                    <li class="nav-item">
-                      <%= link_to 'マイページ', my_page_path %></li>
-                    <li class="nav-item">
-                      <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+                    <li class="nav-item mr-1" >
+                      <%= link_to categories_path, class: "btn btn-primary" do %>
+                        カテゴリー一覧
+                      <% end %>  
+                    </li>
+                    <li class="nav-item mr-1">
+                      <%= link_to bookmarks_path, class: "btn btn-primary" do %>
+                        ブックマーク一覧
+                      <% end %>
+                    </li>
+                    <li class="nav-item mr-1">
+                      <%= link_to new_procedure_path, class: "btn btn-primary" do %>
+                        手順作成
+                      <% end %>
+                    </li>
+                    <li class="nav-item mr-1">
+                      <%= link_to my_page_path, class: "btn btn-primary" do %>
+                        マイページ
+                      <% end %>
+                    </li>
+                    <li class="nav-item mr-1">
+                      <%= link_to destroy_user_session_path, method: :delete, class: "btn btn-primary" do %>
+                        ログアウト
+                      <% end %>
+                    </li>
 
                       <%= render 'searches/search' %>
 
                   <% elsif admin_signed_in? %>
-                    <li class="nav-item">
-                      <%= link_to 'カテゴリー一覧',  admin_categories_path %></li>
-                    <li class="nav-item">
-                      <%= link_to '利用者一覧', admin_users_path %></li>
-                    <li class="nav-item">
-                      <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %></li>
+                    <li class="nav-item mr-1">
+                      <%= link_to admin_categories_path, class: "btn btn-primary" do %>
+                        カテゴリー一覧
+                      <% end %>
+                    </li>
+                    <li class="nav-item mr-1">
+                      <%= link_to admin_users_path, class: "btn btn-primary" do %>
+                        利用者一覧
+                      <% end %>
+                    </li>
+                    <li class="nav-item mr-1">
+                      <%= link_to destroy_admin_session_path, method: :delete, class: "btn btn-primary" do %>
+                        ログアウト
+                      <% end %>
+                    </li>
 
                       <%= render 'searches/search' %>
 
                   <% else %>
-                    <li class="nav-item">
-                      <%= link_to 'カテゴリー一覧', categories_path %></li>
-                    <li class="nav-item">
-                      <%= link_to '新規作成', new_user_registration_path %></li>
-                    <li class="nav-item">
-                      <%= link_to 'ログイン', user_session_path %></li>
+                    <li class="nav-item mr-1">
+                      <%= link_to categories_path, class: "btn btn-primary" do %>
+                       カテゴリー一覧
+                      <% end %>
+                    </li>
+                    <li class="nav-item mr-1">
+                      <%= link_to new_user_registration_path, class: "btn btn-primary" do %>
+                        新規作成
+                      <% end %>
+                    </li>
+                    <li class="nav-item mr-1">
+                      <%= link_to user_session_path, class: "btn btn-primary" do %>
+                        ログイン
+                      <% end %>
+                    </li>
                   <% end %>
                 </ul>
               </div>
