@@ -19,7 +19,7 @@
           </tr>
         </tbody>
       </table>
-        <div><%= link_to "手順を変更する", edit_procedure_path %></div>
+        <div><%= link_to "手順を変更する", edit_procedure_path(@procedure) %></div>
   </div>
   
   <div clas="row">
@@ -46,6 +46,14 @@
             <p>変更件数：<%= @procedure.procedure_changes.count %></p>
   </div>
   <div class="row mt-2">
+    <% if @procedure_change.errors.any? %>
+  <%= @procedure_change.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @procedure_change.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
     
     <%= form_with model: [@procedure, @procedure_change] do |f| %>
       <div class="col-4">

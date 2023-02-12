@@ -8,7 +8,7 @@ class Public::ProcedureChangesController < ApplicationController
     if @procedure_change.save
       redirect_to procedure_path(@procedure)
     else
-      redirect_to procedure_path(@procedure), notice: "※変更点・追加点、変更・追加理由を入力してください"
+      render template: "public/procedures/show"
     end
   end
 
