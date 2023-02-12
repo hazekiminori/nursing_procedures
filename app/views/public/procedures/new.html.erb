@@ -1,5 +1,14 @@
 <div class="container">
   <h4>手順新規作成画面</h4>
+  <% if @procedure.errors.any? %>
+  <%= @procedure.errors.count %>件のエラーが発生しました
+  必要な項目を入力してください
+  <ul>
+    <% @procedure.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
     <%= form_with model: @procedure, local: true, url: procedures_path, method: :post do |f| %>
         <div>
             <%= f.label :title, "手順タイトル" %>

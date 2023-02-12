@@ -6,6 +6,13 @@ class Procedure < ApplicationRecord
   has_many :procedure_changes, dependent: :destroy
 
   has_one_attached :image
+  
+  validates :title, presence: true
+  validates :body, presence: true
+  validates :necessity_item, presence: true
+  validates :image, presence: true
+  
+  
 
   def bookmarked_by?(user)
     bookmarks.exists?(user_id: user.id)

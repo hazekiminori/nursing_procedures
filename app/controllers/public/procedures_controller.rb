@@ -13,7 +13,7 @@ class Public::ProceduresController < ApplicationController
   def create
     @procedure = Procedure.new(procedure_params)
     @procedure.user_id = current_user.id
-    if @procedure.save!
+    if @procedure.save
       redirect_to procedure_path(@procedure)
     else
       render :new
