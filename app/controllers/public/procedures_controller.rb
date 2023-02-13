@@ -20,6 +20,10 @@ class Public::ProceduresController < ApplicationController
       render :new
     end
   end
+  
+  def index
+    @procedures = Procedure.all
+  end
 
   def edit
     @procedure = Procedure.find(params[:id])
@@ -41,6 +45,12 @@ class Public::ProceduresController < ApplicationController
     end
   end
   
+  def user_confirmation
+    @user = User.find(params[:id])
+     if @user != current_user
+       redirect_to categories_path, notice: '投稿者本人のみ編集可能です'
+     end
+  end
 
   def procedure_params
     params.require(:procedure).permit(:category_id, :user_id, :title, :image, :necessity_item, :body)

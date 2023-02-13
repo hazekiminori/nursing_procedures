@@ -1,0 +1,16 @@
+<div class = "container">
+  <h4>手順一覧</h4>
+    <table>
+      <tbody>
+        <% @procedures.each do |procedure| %>
+          <tr>
+            <td>
+              <%= link_to procedures_path do %>
+                <%= procedure.title %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+</div>

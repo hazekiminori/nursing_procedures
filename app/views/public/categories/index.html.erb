@@ -1,13 +1,21 @@
 <div class="container">
   <h4>カテゴリー一覧</h4>
     <table>
+      <thead>
+        手順タイトル
+      </thead>
       <tbody>
-        <td>
-          <% @categories.each do |category| %>
-            <%= link_to category.name, category_path(category.id) %>
-          <% end %>
-        </td>
+        <tr>
+          <td>
+            <% @categories.each do |category| %>
+              <%= link_to category.name, category_path(category.id) %>
+            <% end %>
+          </td>
+        </tr>
       </tbody>
     </table>
+    <%= link_to procedures_path, class: "btn btn-primary" do %>
+      手順一覧を見る
+    <% end %>
 </div>
   

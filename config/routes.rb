@@ -36,7 +36,7 @@ Rails.application.routes.draw do
     get '/users/information/edit' =>'users#edit', as:'edit_users'
     get 'users/quit' => 'users#quit', as:'quit';
     patch 'users/withdrawal' => 'users#withdrawal', as:'withdrawal'
-    resources :procedures, only:[:new, :edit, :create, :update, :show] do
+    resources :procedures, only:[:new, :edit, :create, :update, :show, :index] do
       resource :bookmarks, only:[:create, :destroy]
       resources :procedure_changes, only:[:create, :destroy]
     end
