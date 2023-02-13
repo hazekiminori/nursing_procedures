@@ -1,4 +1,5 @@
 class Public::ProceduresController < ApplicationController
+  before_action :authenticate_user!, only:[:edit, :update]
   before_action :ensure_normal_user, only:[:new, :create, :edit, :update]
 
   def show

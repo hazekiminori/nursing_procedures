@@ -1,4 +1,5 @@
 class Public::ProcedureChangesController < ApplicationController
+  before_action :authenticate_user!
   before_action :ensure_normal_user, only:[:create, :destroy]
 
   def create
