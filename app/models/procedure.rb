@@ -26,6 +26,9 @@ class Procedure < ApplicationRecord
     image.variant(resize_to_limit: [width, height]).processed
   end
   
+  scope :latest, -> {order(created_at: :desc)}
+  scope :old, -> {order(created: :asc)}
+  scope :bookmark_count, -> {order(bookmark: :desc)}
   
   
   # 検索方法分岐

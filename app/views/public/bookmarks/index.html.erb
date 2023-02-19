@@ -1,8 +1,16 @@
 <div class="container">
   <h4>ブックマーク一覧</h4>
-    <% @bookmarks.each do |bookmark| %>
-      <%= link_to procedure_path(bookmark.procedure) do %>
-        <%= bookmark.procedure.title %>
-      <% end %>
-    <% end %>
+    <table>
+      <tbody>
+        <tr>
+          <% @bookmarks.each do |bookmark| %>
+            <td>
+              <%= link_to procedure_path(bookmark.procedure) do %>
+                <%= bookmark.procedure.title %>
+              <% end %>
+            </td>
+          <% end %>
+        </tr>
+      </tbody>
+    </table>
 </div>

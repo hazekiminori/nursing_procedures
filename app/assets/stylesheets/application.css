@@ -5,8 +5,8 @@
   box-sizing: border-box;
 }
 
-.header {
-  height: 30px;
+.main {
+  background-color: red;
 }
 
 /*

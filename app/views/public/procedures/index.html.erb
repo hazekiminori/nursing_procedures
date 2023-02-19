@@ -13,4 +13,10 @@
         <% end %>
       </tbody>
     </table>
+    <p>並び替え</p>
+    <p>
+      <%= link_to '新しい順', procedures_path(latest: "true") %>
+      |<%= link_to '古い順', procedures_path(old: "true") %>
+      |<%= link_to '評価の高い順', procedures_path(bookmark_count: "true") %>
+      </p>
 </div>
