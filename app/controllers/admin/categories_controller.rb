@@ -1,5 +1,4 @@
 class Admin::CategoriesController < ApplicationController
-
   def index
     @categories = Category.all
   end
@@ -16,7 +15,7 @@ class Admin::CategoriesController < ApplicationController
     @category = Category.new(category_params)
     @categories = Category.all
     if @category.save
-      redirect_to admin_categories_path, notice: "登録しました"
+      redirect_to admin_categories_path, notice: '登録しました'
     else
       render :index
     end
@@ -34,7 +33,7 @@ class Admin::CategoriesController < ApplicationController
       render :edit
     end
   end
-  
+
   def destroy
     @category = Category.find(params[:id])
     @category.destroy
@@ -44,7 +43,7 @@ class Admin::CategoriesController < ApplicationController
   def search
     @categories = Category.search(params[:keyword])
     @keyword = params[:keyword]
-    render "index"
+    render 'index'
   end
 
   private
@@ -52,5 +51,4 @@ class Admin::CategoriesController < ApplicationController
   def category_params
     params.require(:category).permit(:name, :procedure_id)
   end
-
 end

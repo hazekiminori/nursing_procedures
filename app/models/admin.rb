@@ -3,7 +3,7 @@ class Admin < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-         
+
   def email_required?
     false
   end
@@ -15,5 +15,4 @@ class Admin < ApplicationRecord
   def will_save_change_to_email?
     false
   end
-  
 end

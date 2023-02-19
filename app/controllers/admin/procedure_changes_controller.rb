@@ -1,5 +1,4 @@
 class Admin::ProcedureChangesController < ApplicationController
-
   def create
     @procedures = procedure.find(params[:procedure_id])
     @procedure_change = current_user.procedure_changes.new(procedure_change_params)
@@ -18,5 +17,4 @@ class Admin::ProcedureChangesController < ApplicationController
   def change_params
     params.require(:procedure_change).permit(:change, :reason)
   end
-
 end

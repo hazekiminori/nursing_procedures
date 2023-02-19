@@ -1,5 +1,5 @@
 class Public::CategoriesController < ApplicationController
-  before_action :authenticate_user! 
+  before_action :authenticate_user!
 
   def index
     @categories = Category.all
@@ -8,11 +8,10 @@ class Public::CategoriesController < ApplicationController
   def show
     @category = Category.find(params[:id])
   end
-  
+
   def search
     @categories = Category.search(params[:keyword])
     @keyword = params[:keyword]
-    render "index"
+    render 'index'
   end
-
 end

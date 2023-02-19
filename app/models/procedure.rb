@@ -6,13 +6,11 @@ class Procedure < ApplicationRecord
   has_many :procedure_changes, dependent: :destroy
 
   has_one_attached :image
-  
+
   validates :title, presence: true
   validates :body, presence: true
   validates :necessity_item, presence: true
   validates :image, presence: true
-  
-  
 
   def bookmarked_by?(user)
     bookmarks.exists?(user_id: user.id)
@@ -25,25 +23,23 @@ class Procedure < ApplicationRecord
     end
     image.variant(resize_to_limit: [width, height]).processed
   end
-  
-  scope :latest, -> {order(created_at: :desc)}
-  scope :old, -> {order(created: :asc)}
-  scope :bookmark_count, -> {order(bookmark: :desc)}
-  
-  
+
+  scope :latest, -> { order(created_at: :desc) }
+  scope :old, -> { order(created: :asc) }
+  scope :bookmark_count, -> { order(bookmark: :desc) }
+
   # 検索方法分岐
   def self.looks(search, word)
-    if search == "perfect_match"
-      @procedure = Procedure.where("title LIKE?","#{word}")
-    elsif search == "forward_match"
-      @procedure = Procedure.where("title LIKE?","#{word}%")
-    elsif search == "backward_match"
-      @procedure = Procedure.where("title LIKE?","%#{word}")
-    elsif search == "partial_match"
-      @procedure = Procedure.where("title LIKE?","%#{word}%")
-    else
-      @procedure = Procedure.all
-    end
+    @procedure = if search == 'perfect_match'
+                   Procedure.where('title LIKE?', "#{word}")
+                 elsif search == 'forward_match'
+                   Procedure.where('title LIKE?', "#{word}%")
+                 elsif search == 'backward_match'
+                   Procedure.where('title LIKE?', "%#{word}")
+                 elsif search == 'partial_match'
+                   Procedure.where('title LIKE?', "%#{word}%")
+                 else
+                   Procedure.all
+                 end
   end
-
 end
