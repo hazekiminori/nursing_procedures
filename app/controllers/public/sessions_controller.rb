@@ -3,6 +3,7 @@
 class Public::SessionsController < Devise::SessionsController
   before_action :configure_sign_in_params, only: [:create]
   # before_action :user_state, only:[:create]
+  before_action :reject_user, only: [:create] 
 
   def adter_sign_out_path_for(_resource)
     new_user_session_path
@@ -39,13 +40,15 @@ class Public::SessionsController < Devise::SessionsController
     devise_parameter_sanitizer.permit(:sign_in, keys: %i[email password])
   end
 
-  def user_state
-    @user = User.find_by(email: params[:user][:email])
-    return unless @user.is_deleted
-
-    return unless @user.valid_password?(params[:user][:password])
-
-    @user.is_deleted && !false
-    redirect_to new_user_registration_path
+  def reject_user
+    @user = User.find_by(email: params[:user][:email].downcase)
+    if @user
+      if @user.valid_password?(params[:user][:password]) && (@user.active_for_authentication? == false)
+          flash[:notice] = "退会済みです、再度ご登録してご利用ください。"
+          redirect_to new_user_registration_path
+      end
+    else
+        flash[:notice] = "項目を入力してください"
+    end
   end
 end
