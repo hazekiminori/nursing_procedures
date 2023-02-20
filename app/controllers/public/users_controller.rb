@@ -7,9 +7,12 @@ class Public::UsersController < ApplicationController
   end
 
   def update
-    @user = current_user
-    @user.update(user_params)
-    redirect_to my_page_path
+    if @user == current_user
+       @user.update(user_params)
+       redirect_to my_page_path
+    else
+       redirect_to root_path, notice: '他者のユーザー情報編集はできません'
+    end
   end
 
   def mypage
@@ -23,14 +26,18 @@ class Public::UsersController < ApplicationController
   def quit; end
 
   def withdrawal
-    @user = current_user 
-    @user.update(is_deleted: true)
-    reset_session
-    flash[:notice] = '退会処理を実行いたしました'
-    redirect_to root_path
+    if @user == current_user 
+       @user.update(is_deleted: true)
+       reset_session
+       flash[:notice] = '退会処理を実行いたしました'
+       redirect_to root_path
+    else
+       redirect_to root_path, notice: '他者の退会処理はできません'
+    end
   end
 
   private
+
 
   def ensure_normal_user
     return unless current_user.email == 'guest@example.com'

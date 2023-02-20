@@ -38,11 +38,14 @@ class Public::ProceduresController < ApplicationController
   end
 
   def update
-    # @category = Category.find(params[:id])
-    # @procedure.category_id = @category.id
-    @procedure = Procedure.find(params[:id])
-    @procedure.update(procedure_params)
-    redirect_to procedure_path(@procedure)
+    @user = User.find(params[:id])
+    if @user == current_user
+      @procedure = Procedure.find(params[:id])
+      @procedure.update(procedure_params)
+      redirect_to procedure_path(@procedure)
+    else
+      redirect_to root_path, notice: '手順変更は作成者のみ可能です'
+    end
   end
 
   private

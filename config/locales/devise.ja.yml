@@ -1,6 +1,6 @@
 # Additional translations at https://github.com/heartcombo/devise/wiki/I18n
 
-en:
+ja:
   devise:
     confirmations:
       confirmed: "アカウントを登録しました"
@@ -12,7 +12,7 @@ en:
       invalid: "あなたのメールアドレスが登録済みの場合、本人確認用のメールが数分以内に送信されます。"
       locked: "あなたのアカウントは凍結されています"
       last_attempt: "あなたのアカウントが凍結される前に、複数回の操作が行われています。"
-      not_found_in_database: "Invalid %{authentication_keys}もしくはパスワードが不正です"
+      not_found_in_database: "%{authentication_keys}もしくはパスワードが不正です"
       timeout: "セッションがタイムアウトしました。もう一度ログインしてください"
       unauthenticated: "アカウント登録もしくはログインしてください"
       unconfirmed: "メールアドレスの本人確認が必要です"
