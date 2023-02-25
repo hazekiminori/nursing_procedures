@@ -20,4 +20,9 @@ class Public::BookmarksController < ApplicationController
     bookmark.destroy
     redirect_to procedure_path(@procedure)
   end
+  
+  def ranking
+    @all_ranks = Bookmark.create_all_ranks
+  end
+
 end
