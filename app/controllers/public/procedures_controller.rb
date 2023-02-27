@@ -22,15 +22,15 @@ class Public::ProceduresController < ApplicationController
   end
 
   def index
-    @procedures = if params[:latest]
-                    Procedure.latest
-                  elsif params[:old]
-                    Procedure.old
-                  elsif params[:bookmark_count]
-                    Procedure.bookmark_count
-                  else
-                    Procedure.all
-                  end
+    if params[:latest]
+      @procedures =  Procedure.latest
+    elsif params[:old]
+      @procedures =Procedure.old
+    elsif params[:bookmark_count]
+      @procedures =Procedure.bookmark_count
+    else
+      @procedures =Procedure.all
+    end
   end
 
   def edit
