@@ -74,3 +74,5 @@ gem 'net-smtp'
 
 gem 'rubocop', require: false
 gem 'rubocop-rails', require: false
+
+gem 'devise'
